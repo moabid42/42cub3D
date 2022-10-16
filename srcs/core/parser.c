@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:37:21 by phperrot          #+#    #+#             */
-/*   Updated: 2020/02/18 15:40:43 by phperrot         ###   ########.fr       */
+/*   Updated: 2022/10/16 01:55:47 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int			get_map(t_arg *arg, char *buff)
+int			get_map(struct data *arg, char *buff)
 {
-	t_map	*tmp;
+	struct map	*tmp;
 
 	if (!(tmp = ft_lstnew_map(withdraw_char(buff, ' '))))
 		return (ERROR);
@@ -22,7 +22,7 @@ int			get_map(t_arg *arg, char *buff)
 	return (SUCCESS);
 }
 
-int			check_floor_ceil_b(t_arg *arg, char *buff, int i)
+int			check_floor_ceil_b(struct data *arg, char *buff, int i)
 {
 	while (ft_isdigit(buff[i]))
 		i++;
@@ -37,7 +37,7 @@ int			check_floor_ceil_b(t_arg *arg, char *buff, int i)
 	return (SUCCESS);
 }
 
-int			check_floor_ceil(t_arg *arg, char *buff)
+int			check_floor_ceil(struct data *arg, char *buff)
 {
 	int i;
 
@@ -65,7 +65,7 @@ int			check_floor_ceil(t_arg *arg, char *buff)
 	return (SUCCESS);
 }
 
-int			check_screen(t_arg *arg, char *buff, int i)
+int			check_screen(struct data *arg, char *buff, int i)
 {
 	while (!ft_isdigit(buff[i]) && !ft_strchr("+-", buff[i]))
 		i++;
@@ -93,7 +93,7 @@ int			check_screen(t_arg *arg, char *buff, int i)
 	return (SUCCESS);
 }
 
-int			fetch_arguments(t_arg *arg, char *buff)
+int			fetch_arguments(struct data *arg, char *buff)
 {
 	if (buff[0] == '\n' || buff[0] == '\0')
 		return (SUCCESS);

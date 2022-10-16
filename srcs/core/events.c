@@ -6,13 +6,13 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:00:20 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/15 23:37:27 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/16 01:38:21 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		ft_key_hit(int key, t_env *env)
+int		ft_key_hit(int key, struct cub3d *env)
 {
 	if (key == KEY_UP)
 		env->move.up = 1;
@@ -31,7 +31,7 @@ int		ft_key_hit(int key, t_env *env)
 	return (SUCCESS);
 }
 
-int		ft_key_release(int key, t_env *env)
+int		ft_key_release(int key, struct cub3d *env)
 {
 	if (key == KEY_UP)
 		env->move.up = 0;
@@ -48,7 +48,7 @@ int		ft_key_release(int key, t_env *env)
 	return (SUCCESS);
 }
 
-int		ft_run(t_env *env)
+int		ft_run(struct cub3d *env)
 {
 	ft_free_img(env, env->img);
 	if ((env->img = ft_new_image(env, env->width, env->height)) == NULL)
@@ -64,7 +64,7 @@ int		ft_run(t_env *env)
 	return (SUCCESS);
 }
 
-int		events(t_env env)
+int		events(struct cub3d env)
 {
 	while (env.save_flag && env.width % 4)
 		env.width++;

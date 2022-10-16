@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:26:08 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/16 01:22:59 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/16 01:48:08 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ typedef struct				s_rgb
 	int						b;
 }							t_rgb;
 
-typedef struct				s_map
+struct						map
 {
 	char					*line;
 	struct s_map			*next;
-}							t_map;
+};
 
 typedef struct				s_save
 {
@@ -107,7 +107,7 @@ typedef struct				s_save
 	int						fd;
 }							t_save;
 
-typedef struct				s_arg
+struct						data
 {
 	int						screen_w;
 	int						screen_h;
@@ -124,8 +124,8 @@ typedef struct				s_arg
 	char					*treasure;
 	t_rgb					floor;
 	t_rgb					ceil;
-	t_map					*map;
-}							t_arg;
+	struct map				*map;
+};
 
 typedef	struct				s_tex
 {
@@ -205,11 +205,11 @@ typedef struct				s_pos
 	int						y;
 }							t_pos;
 
-typedef	struct				s_env
+struct				cub3d
 {
 	void					*mlx_ptr;
 	void					*win_ptr;
-	t_arg					arg;
+	struct data				arg;
 	char					**map;
 	int						map_height;
 	int						map_width;
@@ -233,95 +233,98 @@ typedef	struct				s_env
 	int						save_flag;
 	unsigned int			color;
 	int						minimap;
-}							t_env;
+};
 
-int							fetch_arguments(t_arg *arg, char *buff);
+int							fetch_arguments(struct data *arg, char *buff);
 
-int							check_path(t_arg *arg, char *buff);
+int							check_path(struct data *arg, char *buff);
 int							check_path1(char *orientation, char \
-		*buff, int i, t_arg *arg);
+		*buff, int i, struct data *arg);
 int							check_path2(char *orientation, char \
-		*buff, int i, t_arg *arg);
+		*buff, int i, struct data *arg);
 int							check_path3(char *orientation, char \
-		*buff, int i, t_arg *arg);
+		*buff, int i, struct data *arg);
 
-int							check_map(t_map *map, int count_pos, int i);
+int							check_map(struct map *map, int count_pos, int i);
 
-t_tex						*ft_new_tex(t_env *env, char *file, char *type);
-int							init_items(t_env *env);
-t_env						init_env(t_arg arg);
-t_img						*ft_new_img(t_env *env, char *file);
+t_tex						*ft_new_tex(struct cub3d *env, char *file, char *type);
+int							init_items(struct cub3d *env);
+struct data					init_env(struct data arg);
+t_img						*ft_new_img(struct cub3d *env, char *file);
 
 int							from_rgb_to_hex(t_rgb color);
-void						get_arg_for_env(t_env *env, t_arg a, int y, int x);
-t_img						*ft_new_img(t_env *env, char *file);
+void						get_arg_for_env(struct cub3d *env, struct data a, int y, int x);
+t_img						*ft_new_img(struct cub3d *env, char *file);
 
-int							ft_exit(t_env *env);
-int							events(t_env env);
+int							ft_exit(struct cub3d *env);
+int							events(struct cub3d env);
 
-void						ft_move(t_env *env);
+void						ft_move(struct cub3d *env);
 
-int							ft_disp_screen(t_env *env, int x);
+int							ft_disp_screen(struct cub3d *env, int x);
 int							ft_put_pixel(t_img *img, unsigned int\
 		color, int p_x, int p_y);
 
 
-int							display_sound(t_env *env, t_pos offset,\
+int							display_sound(struct cub3d *env, t_pos offset,\
 		int *numb_tab);
-void						display_bullet(t_env *env, t_pos offset,\
+void						display_bullet(struct cub3d *env, t_pos offset,\
 		double divider, int *numb_tab);
-int							display_life(t_env *env, t_pos offset,\
+int							display_life(struct cub3d *env, t_pos offset,\
 		int *num_tab);
-int							display_target(t_env *env, t_pos offset,\
+int							display_target(struct cub3d *env, t_pos offset,\
 		int *numb_tab);
-int							ft_disp_items(t_env *env);
+int							ft_disp_items(struct cub3d *env);
 
 
-void						ft_init_ray(t_env *env, int x);
-void						ft_direction_ray(t_env *env);
-char						ft_hit_ray(t_env *env, char wall_tex);
-void						ft_size_ray(t_env *env);
-void						ft_wall_tex(t_env *env, char tex);
-void						ft_sprite_tex(t_env *env);
+void						ft_init_ray(struct cub3d *env, int x);
+void						ft_direction_ray(struct cub3d *env);
+char						ft_hit_ray(struct cub3d *env, char wall_tex);
+void						ft_size_ray(struct cub3d *env);
+void						ft_wall_tex(struct cub3d *env, char tex);
+void						ft_sprite_tex(struct cub3d *env);
 
 
 int							count_char(char *str, char c);
-t_map						*ft_lstlast_map(t_map *lst);
-t_map						*ft_lstnew_map(void *content);
+struct map					*ft_lstlast_map(struct map *lst);
+struct map					*ft_lstnew_map(void *content);
 char						*withdraw_char(char *str, char c);
-void						ft_lstadd_back_map(t_map **alst, t_map *new);
-int							ft_lstsize_map(t_map *lst);
-void						ft_lstclear_map(t_map **lst);
-char						**from_lst_to_tab(t_map *lst);
-t_img						*ft_new_image(t_env *env, int width, int height);
-void						pixel_tex(t_tex *tex, t_env *env);
-char						*pix_color(t_env *env, int sprite);
-void						draw_rectangle(t_env env, int width, int h,\
+void						ft_lstadd_back_map(struct map **alst, struct map *new);
+int							ft_lstsize_map(struct map *lst);
+void						ft_lstclear_map(struct map **lst);
+char						**from_lst_to_tab(struct map *lst);
+t_img						*ft_new_image(struct cub3d *env, int width, int height);
+void						pixel_tex(t_tex *tex, struct cub3d *env);
+char						*pix_color(struct cub3d *env, int sprite);
+void						draw_rectangle(struct cub3d env, int width, int h,\
 		int x, int y, int c);
-void						open_door(t_env *env, char c, int x, int y);
+void						open_door(struct cub3d *env, char c, int x, int y);
 double						ft_abs(double x);
 
 
-unsigned char				*create_file_header(t_env *env, int pad);
+unsigned char				*create_file_header(struct cub3d *env, int pad);
 unsigned char				*create_img_header(int height, int width);
 int							write_headers(t_save *save);
-int							write_colors(t_env *env, int fd, int height,\
+int							write_colors(struct cub3d *env, int fd, int height,\
 		int width);
-int							launch_save(t_env *env);
+int							launch_save(struct cub3d *env);
 
 //minimap
-void						draw_square(t_env env, int x, int y, int color);
-void						init_minimap(t_env env);
+void						draw_square(struct cub3d env, int x, int y, int color);
+void						init_minimap(struct cub3d env);
 
 
-void						ft_free_tex(t_env *env, t_tex *tex);
-void						ft_free_img(t_env *env, t_img *img);
+void						ft_free_tex(struct cub3d *env, t_tex *tex);
+void						ft_free_img(struct cub3d *env, t_img *img);
 
-int							init_tex(t_env *env);
+int							init_tex(struct cub3d *env);
 
-int							ft_error(int error, t_env *env);
+int							ft_error(int error, struct cub3d *env);
 int							ft_error_arg(int error);
 int							ft_error_tex_inputs(int error, char *orientation);
+
+int							main_arg_check(int ac, char **av);
+int							launch_env(struct data arg, int ac);
 
 #	define INVISI_CHAR "\t\v\r\f "
 #	define KEY_UP 13

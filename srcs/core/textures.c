@@ -6,13 +6,13 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 03:50:33 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/15 23:44:47 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/16 01:38:21 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_tex	*ft_new_tex(t_env *env, char *file, char *type)
+t_tex	*ft_new_tex(struct cub3d *env, char *file, char *type)
 {
 	t_tex *tex;
 
@@ -35,7 +35,7 @@ t_tex	*ft_new_tex(t_env *env, char *file, char *type)
 	return (tex);
 }
 
-void	init_tex_wall_sprite(t_env *env)
+void	init_tex_wall_sprite(struct cub3d *env)
 {
 	if ((env->tex_n = ft_new_tex(env, env->arg.no, "NO")) == NULL)
 		env->error = TEX_ERROR_N;
@@ -49,7 +49,7 @@ void	init_tex_wall_sprite(t_env *env)
 	// 	env->error = TEX_ERROR_SP;
 }
 
-int		init_tex(t_env *env)
+int		init_tex(struct cub3d *env)
 {
 	env->error = 0;
 	init_tex_wall_sprite(env);

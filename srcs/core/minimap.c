@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:27:15 by phperrot          #+#    #+#             */
-/*   Updated: 2020/02/18 15:30:46 by phperrot         ###   ########.fr       */
+/*   Updated: 2022/10/16 01:38:21 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_square(t_env env, int x, int y, int color)
+void	draw_square(struct cub3d env, int x, int y, int color)
 {
 	int i;
 	int j;
@@ -35,7 +35,7 @@ void	draw_square(t_env env, int x, int y, int color)
 	}
 }
 
-int		get_color_minimap(t_env env, int i, int j)
+int		get_color_minimap(struct cub3d env, int i, int j)
 {
 	int color;
 
@@ -60,7 +60,7 @@ int		get_color_minimap(t_env env, int i, int j)
 	return (color);
 }
 
-void	init_minimap(t_env env)
+void	init_minimap(struct cub3d env)
 {
 	int i;
 	int j;

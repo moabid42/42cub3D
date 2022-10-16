@@ -6,13 +6,13 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:53:11 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/15 23:50:40 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/16 01:38:21 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int			ft_get_tex_height(t_env *env, char tex)
+int			ft_get_tex_height(struct cub3d *env, char tex)
 {
 	int		height;
 
@@ -28,7 +28,7 @@ int			ft_get_tex_height(t_env *env, char tex)
 	return (height);
 }
 
-int			ft_get_tex_width(t_env *env, char tex)
+int			ft_get_tex_width(struct cub3d *env, char tex)
 {
 	int		width;
 
@@ -44,7 +44,7 @@ int			ft_get_tex_width(t_env *env, char tex)
 	return (width);
 }
 
-void		ft_wall_tex(t_env *env, char tex)
+void		ft_wall_tex(struct cub3d *env, char tex)
 {
 	double	wallx;
 	int		height;

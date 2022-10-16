@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:05:58 by phperrot          #+#    #+#             */
-/*   Updated: 2020/02/18 14:28:50 by phperrot         ###   ########.fr       */
+/*   Updated: 2022/10/16 01:57:01 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ char		*withdraw_char(char *str, char c)
 	return (new_str);
 }
 
-t_map		*ft_lstlast_map(t_map *lst)
+struct map		*ft_lstlast_map(struct map *lst)
 {
-	t_map	*tmp;
+	struct map	*tmp;
 
 	if (!lst)
 		return (NULL);

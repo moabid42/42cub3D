@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:05:18 by phperrot          #+#    #+#             */
-/*   Updated: 2020/02/18 15:05:37 by phperrot         ###   ########.fr       */
+/*   Updated: 2022/10/16 01:38:21 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_free_tex(t_env *env, t_tex *tex)
+void	ft_free_tex(struct cub3d *env, t_tex *tex)
 {
 	if (tex)
 	{
@@ -22,7 +22,7 @@ void	ft_free_tex(t_env *env, t_tex *tex)
 	}
 }
 
-void	ft_free_img(t_env *env, t_img *img)
+void	ft_free_img(struct cub3d *env, t_img *img)
 {
 	if (img)
 	{

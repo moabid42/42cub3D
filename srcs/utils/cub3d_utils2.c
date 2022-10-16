@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:26:33 by phperrot          #+#    #+#             */
-/*   Updated: 2020/02/18 14:29:55 by phperrot         ###   ########.fr       */
+/*   Updated: 2022/10/16 01:57:01 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_map		*ft_lstnew_map(void *content)
+struct map		*ft_lstnew_map(void *content)
 {
-	t_map	*elem;
+	struct map	*elem;
 
 	if (!(elem = malloc(sizeof(t_list))))
 		return (NULL);
@@ -23,9 +23,9 @@ t_map		*ft_lstnew_map(void *content)
 	return (elem);
 }
 
-void		ft_lstadd_back_map(t_map **alst, t_map *new)
+void		ft_lstadd_back_map(struct map **alst, struct map *new)
 {
-	t_map	*tmp;
+	struct map	*tmp;
 
 	tmp = *alst;
 	if (*alst == NULL)
@@ -34,10 +34,10 @@ void		ft_lstadd_back_map(t_map **alst, t_map *new)
 		(ft_lstlast_map(*alst))->next = new;
 }
 
-void		ft_lstclear_map(t_map **lst)
+void		ft_lstclear_map(struct map **lst)
 {
-	t_map	*tmp;
-	t_map	*next;
+	struct map	*tmp;
+	struct map	*next;
 
 	if (!lst)
 		return ;
@@ -51,9 +51,9 @@ void		ft_lstclear_map(t_map **lst)
 	*lst = NULL;
 }
 
-int			ft_lstsize_map(t_map *lst)
+int			ft_lstsize_map(struct map *lst)
 {
-	t_map	*tmp;
+	struct map	*tmp;
 	int		i;
 
 	i = 0;
@@ -68,9 +68,9 @@ int			ft_lstsize_map(t_map *lst)
 	return (i);
 }
 
-char		**from_lst_to_tab(t_map *lst)
+char		**from_lst_to_tab(struct map *lst)
 {
-	t_map	*tmp;
+	struct map	*tmp;
 	int		i;
 	int		j;
 	char	**tab;

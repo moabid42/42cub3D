@@ -6,13 +6,13 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 17:13:11 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/15 22:05:22 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/16 01:38:21 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_rotate(t_env *env, int advance)
+void	ft_rotate(struct cub3d *env, int advance)
 {
 	double	dir;
 	double	plane;
@@ -29,7 +29,7 @@ void	ft_rotate(t_env *env, int advance)
 		+ env->ray.planey * cos(advance * 0.1);
 }
 
-void	move_up(t_env *env)
+void	move_up(struct cub3d *env)
 {
 	if (ft_strchr("0SWENBAOFQT", env->map[(int)(env->player_y)]\
 	[(int)(env->player_x + env->ray.dirx * env->ray.speed)]))
@@ -39,7 +39,7 @@ void	move_up(t_env *env)
 		env->player_y += env->ray.diry * env->ray.speed;
 }
 
-void	up_down(t_env *env)
+void	up_down(struct cub3d *env)
 {
 	if (env->move.up == 1)
 	{
@@ -56,7 +56,7 @@ void	up_down(t_env *env)
 	}
 }
 
-void	straf(t_env *env)
+void	straf(struct cub3d *env)
 {
 	if (env->move.strafl == 1)
 	{
@@ -79,7 +79,7 @@ void	straf(t_env *env)
 	}
 }
 
-void	ft_move(t_env *env)
+void	ft_move(struct cub3d *env)
 {
 	if (env->move.up == 1 || env->move.down == 1)
 		up_down(env);

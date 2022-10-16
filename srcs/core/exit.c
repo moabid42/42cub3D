@@ -6,13 +6,13 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:01:59 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/15 23:43:18 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/16 01:38:21 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		ft_exit(t_env *env)
+int		ft_exit(struct cub3d *env)
 {
 	if (!env->error)
 	{

@@ -6,13 +6,13 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:53:06 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/15 23:44:25 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/16 01:38:21 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_error_tex(int error, t_env *env)
+void	ft_error_tex(int error, struct cub3d *env)
 {
 	env->error = error;
 	if (env->tex_n)
@@ -28,7 +28,7 @@ void	ft_error_tex(int error, t_env *env)
 	ft_putstr("Error\nProblem with textures loading");
 }
 
-int		ft_error(int error, t_env *env)
+int		ft_error(int error, struct cub3d *env)
 {
 	if (error == ZBUFFER_ERROR)
 	{

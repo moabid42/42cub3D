@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:09:40 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/15 23:39:42 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/16 01:56:25 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int			from_rgb_to_hex(t_rgb color)
 	return (output);
 }
 
-void		get_arg_for_env(t_env *env, t_arg arg, int y, int x)
+void		get_arg_for_env(struct cub3d *env, struct data arg, int y, int x)
 {
-	t_map	*tmp;
+	struct map	*tmp;
 
 	tmp = arg.map;
 	while (tmp)
@@ -45,7 +45,7 @@ void		get_arg_for_env(t_env *env, t_arg arg, int y, int x)
 	env->map_height = y - 1;
 }
 
-t_img		*ft_new_img(t_env *env, char *file)
+t_img		*ft_new_img(struct cub3d *env, char *file)
 {
 	t_img	*img;
 

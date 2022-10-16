@@ -6,20 +6,20 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:06:16 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/15 23:42:45 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/16 01:46:39 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int			init_raybuffer(t_env *env)
+int			init_raybuffer(struct cub3d *env)
 {
 	if (!(env->ray.zbuffer = malloc(sizeof(double) * (env->width + 1))))
 		return (ZBUFFER_ERROR);
 	return (SUCCESS);
 }
 
-void		init_env_orientation(t_env *env)
+void		init_env_orientation(struct cub3d *env)
 {
 	if (env->orientation == 'N')
 	{
@@ -43,7 +43,7 @@ void		init_env_orientation(t_env *env)
 	}
 }
 
-void		init_env_2(t_env *env, t_arg arg)
+void		init_env_2(struct cub3d *env, struct data arg)
 {
 	env->width = arg.screen_w;
 	env->height = arg.screen_h;
@@ -57,11 +57,11 @@ void		init_env_2(t_env *env, t_arg arg)
 	env->minimap = 1;
 }
 
-t_env		init_env(t_arg arg)
+struct cub3d		init_env(struct data arg)
 {
-	t_env	env;
+	struct cub3d	env;
 
-	ft_bzero(&env, sizeof(t_env));
+	ft_bzero(&env, sizeof(struct cub3d));
 	ft_bzero(&env.ray, sizeof(t_ray));
 	get_arg_for_env(&env, arg, 0, 0);
 	env.ray.speed = 0.1;
