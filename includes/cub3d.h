@@ -6,14 +6,13 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:26:08 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/16 15:58:07 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/16 16:22:44 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #	ifndef CUB3D_H
 #	define CUB3D_H
-// #	include "../../libft/libft.h"
-// #	include "../minilibx/mlx.h"
+
 
 #include <stdio.h>
 #include <unistd.h>
@@ -323,6 +322,9 @@ int							ft_error(int error, struct cub3d *env);
 int							ft_error_arg(int error);
 int							ft_error_tex_inputs(int error, char *orientation);
 
+
+bool			cub3d_arg_check(int ac, char **av);
+
 #	define INVISI_CHAR "\t\v\r\f "
 #	define KEY_UP 13
 #	define KEY_RIGHT 2
@@ -330,39 +332,16 @@ int							ft_error_tex_inputs(int error, char *orientation);
 #	define KEY_DOWN 1
 #	define ROTATE_LEFT 123
 #	define ROTATE_RIGHT 124
-#	define CROUCH 125
-#	define JUMP 126
 #	define KEYPRESS 2
 #	define KEYRELEASE 3
 #	define KEYPRESSMASK 1
 #	define KEYRELEASEMASK 10
 #	define SPACE_BAR 49
 #	define KEY_EXIT 53
-#	define KEY_ALT 261
-#	define KEY_SOUND 109
-#	define KEY_MINIMAP 46
-#	define KEY_DOOR 31
-#	define KEY_SECRET_DOOR 35
-#	define KEY_RELOAD 15
 #	define STRUCTURENOTIFYMASK 10001
 #	define MINIMAP_SIZE 6
-#	define COLOR_MAP_WALL 0x000000
-#	define COLOR_MAP_PLAYER 0xff0000
-#	define COLOR_MAP_FLOOR 0xffffff
-#	define COLOR_MAP_SPRITE 0x00ff00
-#	define COLOR_MAP_SECRET_DOOR 0x949996
-#	define COLOR_MAP_DOOR 0x632b02
-#	define COLOR_MAP_BONUS 0xed68ca
-#	define COLOR_MAP_AMMO 0xeda705
-#	define COLOR_MAP_ENNEMY 0xa418f5
-#	define COLOR_MAP_TREASURE 0xbfbd2c
 #	define COMPRESSION 24
 #	define BYTES_PER_PIX 3
-#	define FILE_HEADER_SIZE 14
-#	define IMG_HEADER_SIZE 40
-#	define SCREEN_PATH "screen.bmp"
-#	define RIGHTS 0644
-#	define COLLISION_SOUND "./sound/collision.mp3"
 #	define SCREEN_MAX_HEIGHT 1440
 #	define SCREEN_MAX_WIDTH 2560
 

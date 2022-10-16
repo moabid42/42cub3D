@@ -1,11 +1,10 @@
-R 8000 7500
 NO textures/NO.xpm
 SO ./textures/SO.xpm
 WE ./textures/WE.xpm
 EA ./textures/EA.xpm
-S ./items/treasure.xpm
-F 182,182,182
-C 182,182,182
+
+F 100, 100,100
+C 220,100,100
 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1
