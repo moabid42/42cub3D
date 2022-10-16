@@ -3,119 +3,111 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 10:30:07 by phperrot          #+#    #+#             */
-/*   Updated: 2019/12/04 11:06:09 by phperrot         ###   ########.fr       */
+/*   Created: 2022/03/07 13:55:30 by sthitiku          #+#    #+#             */
+/*   Updated: 2022/05/25 14:31:15 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char					*ft_strsub_gnl(char *str, int start, int len)
+t_read	*clear_head(t_read *read, int fd)
 {
-	int					i;
-	char				*output;
+	t_read	*after;
+	t_read	*curr;
 
-	i = 0;
-	if (!str)
-		return (NULL);
-	if (!(output = malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	while (i < len && (str[start + i] != '\n'))
+	curr = read;
+	after = curr->next;
+	if (curr->fd == fd)
 	{
-		output[i] = str[start + i];
-		i++;
+		free(curr->str);
+		free(curr);
+		return (after);
 	}
-	output[i] = '\0';
-	return (output);
+	while (after != NULL)
+	{
+		if (after->fd == fd)
+		{
+			curr->next = after->next;
+			if (after->str != NULL)
+				free(after->str);
+			free(after);
+			return (read);
+		}
+		curr = curr->next;
+		after = curr->next;
+	}
+	return (read);
 }
 
-size_t					ft_strlen_gnl(const char *s)
+size_t	ft_strlen1(char *s)
 {
-	int					i;
+	size_t	i;
 
 	if (!s)
 		return (0);
 	i = 0;
-	while (s[i] != '\0')
+	while (s[i])
 		i++;
 	return (i);
 }
 
-char					*ft_strchr_gnl(const char *s, int c)
+void	ft_strlcpy1(char *dst, char *src, size_t dstsize)
 {
-	int					i;
-	char				*tmp;
+	size_t	i;
 
+	if (!dstsize || !src)
+		return ;
 	i = 0;
-	tmp = (char *)s;
-	if (!s)
-		return (NULL);
-	if (c == '\0')
+	while (i < (dstsize - 1) && src[i])
 	{
-		while (*tmp)
-			tmp++;
-		return ((char*)tmp);
-	}
-	while (tmp[i] != '\0')
-	{
-		if (tmp[i] == (char)c)
-			return ((char *)&tmp[i]);
+		dst[i] = src[i];
 		i++;
 	}
-	if (*tmp == '\0' && c == '\0')
-	{
-		return (tmp);
-	}
-	return (NULL);
+	dst[i] = '\0';
+	return ;
 }
 
-char					*ft_strdup_gnl(const char *s1)
+t_read	*init_struct(int fd)
 {
-	char				*output;
-	int					i;
-	int					size;
+	t_read	*new;
 
-	if (!s1)
+	new = (t_read *)malloc(sizeof(t_read));
+	if (!new)
 		return (NULL);
-	size = ft_strlen_gnl(s1);
-	if (!(output = malloc(sizeof(char) * (size + 1))))
-		return (NULL);
-	i = 0;
-	while ((char)s1[i])
-	{
-		output[i] = s1[i];
-		i++;
-	}
-	output[i] = '\0';
-	return (output);
+	new->fd = fd;
+	new->str = (char *)malloc(sizeof(char));
+	new->str[0] = '\0';
+	new->next = NULL;
+	return (new);
 }
 
-char					*ft_strjoin_gnl(char const *s1, char const *s2)
+t_read	*check_fd(t_read *read, int fd)
 {
-	unsigned long		i;
-	char				*output;
-	unsigned long		size1;
-	unsigned long		size2;
+	t_read	*curr;
+	t_read	*ret;
 
-	if (!(s1 && s2))
-		return (NULL);
-	size1 = ft_strlen_gnl(s1);
-	size2 = ft_strlen_gnl(s2);
-	if (!(output = malloc(sizeof(char) * (size1 + size2 + 1))))
-		return (NULL);
-	i = 0;
-	while (i < size1)
+	if (!read)
 	{
-		output[i] = s1[i];
-		i++;
+		read = init_struct(fd);
+		if (!read)
+			return (NULL);
 	}
-	while (i < size1 + size2)
+	curr = read;
+	while (curr->next != NULL)
 	{
-		output[i] = s2[i - size1];
-		i++;
+		if (curr->fd == fd)
+			return (curr);
+		curr = curr->next;
 	}
-	output[i] = '\0';
-	return (output);
+	if (curr->fd != fd)
+	{
+		ret = init_struct(fd);
+		if (!ret)
+			return (NULL);
+		curr->next = ret;
+		return (ret);
+	}
+	return (curr);
 }

@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:37:21 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/16 15:34:25 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/16 16:52:55 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ int			fetch_arguments(struct data *arg, char *line)
 			return (MAP_ERROR);
 		}
 	if (!ft_isdigit(line[0]) && !ft_strchr("RNSEWSFC", line[0]))
-	{
 		return (ft_error_arg(UNKNOW_ARG));
-	}
 	return (SUCCESS);
 }

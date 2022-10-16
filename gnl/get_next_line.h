@@ -3,27 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/11 11:29:47 by phperrot          #+#    #+#             */
-/*   Updated: 2019/11/21 20:03:35 by phperrot         ###   ########.fr       */
+/*   Created: 2022/03/07 13:38:24 by sthitiku          #+#    #+#             */
+/*   Updated: 2022/10/16 17:59:26 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef __GET_NEXT_LINE_H
-#	define __GET_NEXT_LINE_H
-#	include <unistd.h>
-#	include <fcntl.h>
-#	include <stdlib.h>
-#	ifndef BUFFER_SIZE
-#	define BUFFER_SIZE 42
-#	endif
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int				get_next_line(const int fd, char **line);
-size_t			ft_strlen_gnl(const char *s);
-char			*ft_strchr_gnl(const char *s, int c);
-char			*ft_strdup_gnl(const char *s1);
-char			*ft_strjoin_gnl(char const *s1, char const *s2);
-char			*ft_strsub_gnl(char *str, int start, int len);
+# include <stdlib.h>
+# include <unistd.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <fcntl.h>
 
-#	endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
+
+typedef struct s_read
+{
+	int				fd;
+	char			*str;
+	struct s_read	*next;
+}				t_read;
+
+size_t	ft_strlen1(char *s);
+void	ft_strlcpy1(char *dst, char *src, size_t dstsize);
+char	*get_next_line(int fd);
+int		new_line_checker(char *s);
+t_read	*init_struct(int fd);
+t_read	*check_fd(t_read *read, int fd);
+t_read	*clear_head(t_read *read, int fd);
+char	*free_and_cpy_reminder(char *str);
+char	*return_line(char *str);
+char	*read_file(int fd, char *str);
+
+#endif

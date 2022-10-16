@@ -3,106 +3,136 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/11 11:29:52 by phperrot          #+#    #+#             */
-/*   Updated: 2019/12/04 13:14:12 by phperrot         ###   ########.fr       */
+/*   Created: 2022/03/09 15:38:02 by sthitiku          #+#    #+#             */
+/*   Updated: 2022/10/16 17:59:22 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char		*ft_find_nl(char **temp)
+char	*free_and_cpy_reminder(char *str)
 {
-	char		*stock_long;
-	char		*memory;
+	char	*new;
+	size_t	new_len;
+	int		pos;
 
-	memory = NULL;
-	stock_long = ft_strdup_gnl((char*)temp);
-	if (ft_strchr_gnl(*temp, '\n'))
+	if (new_line_checker(str) == -42)
 	{
-		free(stock_long);
-		stock_long = NULL;
-		stock_long = ft_strsub_gnl(*temp, 0, (ft_strlen_gnl(*temp)\
-						- ft_strlen_gnl((char*)ft_strchr_gnl(*temp, '\n'))));
-		memory = ft_strdup_gnl(ft_strchr_gnl(*temp, '\n') + 1);
-		free(*temp);
-		*temp = NULL;
-		*temp = (char *)ft_strdup_gnl(stock_long);
+		free(str);
+		return (NULL);
 	}
-	free(stock_long);
-	return (memory);
-}
-
-char			*ft_join_free_gnl(char *s1, char *s2)
-{
-	char		*tmp;
-
-	tmp = ft_strdup_gnl(s1);
-	free(s1);
-	s1 = ft_strjoin_gnl(s2, tmp);
-	free(tmp);
-	free(s2);
-	s2 = NULL;
-	return (s1);
-}
-
-static int		ft_read(int fd, char **temp)
-{
-	char		buffer[BUFFER_SIZE + 1];
-	int			check;
-	int			ret;
-	char		*tmp;
-
-	ret = 1;
-	check = 1;
-	while ((ret > 0) && check == 1)
+	pos = new_line_checker(str);
+	new_len = ft_strlen1(str) - pos;
+	new = (char *)malloc(sizeof(char) * new_len);
+	if (!new)
 	{
-		ret = read(fd, buffer, BUFFER_SIZE);
-		if (ret < 0)
-			return (-1);
-		buffer[ret] = '\0';
-		if (*temp)
-		{
-			tmp = ft_strdup_gnl(*temp);
-			free(*temp);
-			*temp = ft_strjoin_gnl(tmp, buffer);
-			free(tmp);
-		}
-		else
-			*temp = ft_strdup_gnl(buffer);
-		check = ((ft_strchr_gnl(buffer, '\n')) ? 0 : 1);
+		free(str);
+		return (NULL);
 	}
-	return (ret);
-}
-
-int				str_free(char *str, int i)
-{
+	ft_strlcpy1(new, &str[pos + 1], new_len);
 	free(str);
-	return (i);
+	return (new);
 }
 
-int				get_next_line(const int fd, char **line)
+int	new_line_checker(char *s)
 {
-	char		*temp;
-	static char	*memor;
-	int			ret;
+	int	i;
 
-	temp = ft_strdup_gnl("\0");
-	ret = ft_read(fd, &temp);
-	if (ret < 0 || fd < 0 || !(line) || BUFFER_SIZE <= 0)
-		return (str_free(temp, -1));
-	temp = (memor != NULL) ? ft_join_free_gnl(temp, memor) : temp;
-	memor = NULL;
-	if ((ret == 0 && !ft_strchr_gnl(temp, '\n') && !ft_strchr_gnl(memor, '\n')))
+	i = 0;
+	if (!s)
+		return (0);
+	while (s[i])
 	{
-		*line = ft_strdup_gnl(temp);
-		return (str_free(temp, 0));
+		if (s[i] == '\n')
+			return (i);
+		i++;
 	}
-	if (ret >= 0)
+	return (-42);
+}
+
+char	*return_line(char *str)
+{
+	char	*ans;
+	int		pos;
+
+	pos = new_line_checker(str);
+	if (pos < 0)
 	{
-		memor = ft_find_nl(&temp);
-		*line = ft_strdup_gnl(temp);
+		ans = (char *)malloc(sizeof(char) * (ft_strlen1(str) + 1));
+		if (!ans)
+		{
+			free(str);
+			return (NULL);
+		}
+		ft_strlcpy1(ans, str, ft_strlen1(str) + 1);
+		return (ans);
 	}
-	return (str_free(temp, 1));
+	ans = (char *)malloc(sizeof(char) * (pos + 2));
+	if (!ans)
+	{
+		free(str);
+		return (NULL);
+	}
+	ft_strlcpy1(ans, str, pos + 2);
+	return (ans);
+}
+
+char	*read_file(int fd, char *str)
+{
+	char	buf[BUFFER_SIZE];
+	char	*tmp;
+	int		fbyte;
+
+	fbyte = read(fd, buf, BUFFER_SIZE);
+	if (fbyte <= 0 || str == NULL)
+	{
+		if (str == NULL || str[0] != '\0')
+			return (str);
+		free(str);
+		return (NULL);
+	}
+	while (fbyte > 0)
+	{
+		tmp = (char *)malloc(ft_strlen1(str) + fbyte + 1);
+		tmp[0] = '\0';
+		ft_strlcpy1(tmp, str, ft_strlen1(str) + 1);
+		ft_strlcpy1(&tmp[ft_strlen1(str)], buf, fbyte + 1);
+		free(str);
+		if (new_line_checker(tmp) != -42)
+			break ;
+		str = tmp;
+		fbyte = read(fd, buf, BUFFER_SIZE);
+	}
+	return (tmp);
+}
+
+char	*get_next_line(int fd)
+{
+	static t_read	*head = NULL;
+	t_read			*curr;
+	char			*ret;
+
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
+		return (NULL);
+	curr = check_fd(head, fd);
+	if (!curr)
+		return (NULL);
+	if (!head)
+		head = curr;
+	curr->str = read_file(fd, curr->str);
+	if (!curr->str || *(curr->str) == '\0')
+	{
+		head = clear_head(head, fd);
+		return (NULL);
+	}
+	ret = return_line(curr->str);
+	if (!ret)
+	{
+		head = clear_head(head, fd);
+		return (NULL);
+	}
+	curr->str = free_and_cpy_reminder(curr->str);
+	return (ret);
 }
