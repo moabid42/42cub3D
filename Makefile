@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: moabid <moabid@student.42.fr>              +#+  +:+       +#+         #
+#    By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/14 01:52:39 by moabid            #+#    #+#              #
-#    Updated: 2022/10/16 01:32:53 by moabid           ###   ########.fr        #
+#    Updated: 2022/10/18 01:52:55 by rdoukali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,8 +49,13 @@ clean:
 fclean: clean
 	-@$(RM) $(NAME)
 
+git: fclean
+	@git add .
+	@git commit -m "Updated!"
+	@git push
+
 re: clean all
 
-.PHONY: re run fclean clean all
+.PHONY: re run fclean clean all git
 
 -include $(DEPENDS)

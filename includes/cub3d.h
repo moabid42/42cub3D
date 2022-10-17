@@ -6,7 +6,7 @@
 /*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:26:08 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/17 23:02:27 by rdoukali         ###   ########.fr       */
+/*   Updated: 2022/10/18 00:29:11 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,11 @@ struct						data
 	int						line_index;
 	int						screen_w;
 	int						screen_h;
-	char					*no;
-	char					*so;
-	char					*we;
-	char					*ea;
+	int						map_flag;
+	char						*no;
+	char						*so;
+	char						*we;
+	char						*ea;
 	t_rgb					floor;
 	t_rgb					ceil;
 	t_map					*map;
@@ -319,6 +320,8 @@ void	printer_map(struct data *arg);
 void	ray_informations_printer(struct cub3d *cub3d);
 
 bool			cub3d_arg_check(int ac, char **av);
+
+void    new_line_remove(char *line);
 
 
 #	define INVISI_CHAR "\t\v\r\f "

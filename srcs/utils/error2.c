@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:58:00 by phperrot          #+#    #+#             */
-/*   Updated: 2020/02/20 08:26:35 by phperrot         ###   ########.fr       */
+/*   Updated: 2022/10/17 23:32:07 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int		ft_error_arg(int error)
 		ft_putstr("Error\nSeveral positions entered in the map");
 	if (error == MAP_ERROR_NO_POS)
 		ft_putstr("Error\nNo position was entered in the map");
+	if (error)
+		exit(1);
 	ft_error_arg2(error);
 	return (ERROR);
 }

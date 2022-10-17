@@ -3,22 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   init2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:09:40 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/16 14:05:15 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 00:13:21 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int			from_rgb_to_hex(t_rgb color)
+int	inline	from_rgb_to_hex(t_rgb color)
 {
-	int		output;
-
-	output = 256 * 256 * color.r + 256 * color.g + color.b;
-	printf("The output color is : %d\n", output);
-	return (output);
+	return (256 * 256 * color.r + 256 * color.g + color.b);
 }
 
 void		get_arg_for_env(struct cub3d *env, struct data arg, int y, int x)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 14:08:46 by moabid            #+#    #+#             */
-/*   Updated: 2022/10/16 14:29:15 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/17 23:37:08 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool			cub3d_arg_check(int ac, char **av)
 	int		error;
 
 	error = 0;
-	if (ac > 3)
+	if (ac > 2)
 		error = NB_ARG_ERROR_TOO_MANY;
 	if (ac < 2)
 		error = NB_ARG_ERROR_TOO_FEW;

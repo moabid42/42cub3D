@@ -6,7 +6,7 @@
 /*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 09:15:57 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/17 23:00:42 by rdoukali         ###   ########.fr       */
+/*   Updated: 2022/10/18 01:48:26 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ bool	last_line_checker(char *line)
 			return (false);
 		i++;
 	}
-	printf("The last line is valid\n");
+	//printf("The last line is valid\n");
 	return (true);
 }
 
@@ -75,6 +75,20 @@ void	printer_map_2(t_map *map)
 	}
 }
 
+// bool	check_emty_line(char *line)
+// {
+// 	int i;
+
+// 	i = 0;
+// 	while (line[i] != '\0')
+// 	{
+// 		if (line[i] != ' ' && line[i] != '1' && line[i] != '0' && ft_strchr("NSWE", line[i]) == NULL)
+// 			return (false);
+// 		i++;
+// 	}
+// 	return (true);
+// }
+
 bool			cub3d_check_map(t_map *map)
 {
 	t_map *tmp;
@@ -90,6 +104,11 @@ bool			cub3d_check_map(t_map *map)
 	//printer_map_2(map);
 	while (tmp != NULL)
 	{
+		// if (check_emty_line(tmp->line) == false)
+		// 	{
+		// 		printf("Line %d is Empty\n", i);
+		// 		return (false);
+		// 	}
 		if (i == 0)
 		{
 			if (first_line_checker(tmp->line) == false)
@@ -146,6 +165,14 @@ void    new_line_remove(char *line)
     line[i] = '\0';
 }
 
+bool	ft_isnotempty(struct data *arg, char *line)
+{
+	if (arg->map_flag == 1)
+		if (line[0] == '\n' && line[1] == '\0')
+			return (false);
+	return (true);
+}
+
 bool	cub3d_create(struct data *arg, char *file)
 {
 	int			fd1;
@@ -156,16 +183,23 @@ bool	cub3d_create(struct data *arg, char *file)
 	fd1 = open(file, O_RDWR);
 	line = get_next_line(fd1);
 	arg->line_index = 0;
+	arg->map_flag = 0;
 	while (line)
 	{
 		if (ft_strchr(line, '\n'))
+		{
+			if (ft_isnotempty(arg, line) == false)
+				return (ft_error_arg(FILE_READ_ERROR));
 			new_line_remove(line);
+		}
 		if (fetch_arguments(arg, line) != SUCCESS)
 			return (ARGUMENT_ERROR);
 		free(line);
 		line = get_next_line(fd1);
+		//printf("%s", line);
 		arg->line_index++;
 	}
+	// printer_map(arg);
 	if (line)
 		free(line);
 	if (ret == -1)

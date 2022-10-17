@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:37:21 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/17 00:38:21 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 01:43:57 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ int			check_floor_ceil_b(struct data *arg, char *line, int i)
 {
 	while (ft_isdigit(line[i]))
 		i++;
-	while (!ft_isdigit(line[i]) && line[i] != '-')
+	while (!ft_isdigit(line[i]) && line[i] != '-' && line[i])
 		i++;
+	if (!line[i])
+		return (RGB_ERROR);
 	if (ft_atoi(line + i) > 255 || ft_atoi(line + i) < 0)
 		return (RGB_ERROR);
 	if (line[0] == 'F')
@@ -43,7 +45,7 @@ int			check_floor_ceil(struct data *arg, char *line)
 	int i;
 
 	i = 0;
-	while (!ft_isdigit(line[i]) && line[i] != '-')
+	while (!ft_isdigit(line[i]) && line[i] != '-' && line[i])
 		i++;
 	if (ft_atoi(line + i) > 255 || ft_atoi(line + i) < 0)
 		return (RGB_ERROR);
@@ -53,8 +55,10 @@ int			check_floor_ceil(struct data *arg, char *line)
 		arg->ceil.r = ft_atoi(line + i);
 	while (ft_isdigit(line[i]))
 		i++;
-	while (!ft_isdigit(line[i]) && line[i] != '-')
+	while (!ft_isdigit(line[i]) && line[i] != '-' && line[i])
 		i++;
+	if (!line[i])
+		return (RGB_ERROR);
 	if (ft_atoi(line + i) > 255 || ft_atoi(line + i) < 0)
 		return (RGB_ERROR);
 	if (line[0] == 'F')
@@ -81,11 +85,14 @@ int			fetch_arguments(struct data *arg, char *line)
 		if (check_floor_ceil(arg, line) != SUCCESS)
 			return (ft_error_arg(RGB_ERROR));
 	if (ft_isdigit(line[0]) || line[0] == ' ')
+	{
+		arg->map_flag = 1;
 		if (get_map(arg, line) != SUCCESS)
 		{
 			ft_putstr("Error\nProblems with map");
 			return (MAP_ERROR);
 		}
+	}
 	// printf("The character is %c\n", line[0]);
 	// if (!ft_isdigit(line[0]) && !ft_strchr("RNSEWSFC", line[0]))
 	// 	return (ft_error_arg(UNKNOW_ARG));
