@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:27:28 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/16 14:04:16 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/17 01:21:01 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,8 @@ char		*pix_color(struct cub3d *env, int sprite)
 	char	*output;
 
 	output = NULL;
-	sprite = 0;
 	env = NULL;	
-	// if (!sprite && !env->ray.door)
-	// {
-	// 	output = get_output_wall(env);
-	// }
+	// output = get_output_wall(env);
 	// if (env->ray.door)
 	// {
 	// 	pixel_tex(env->tex_door, env);

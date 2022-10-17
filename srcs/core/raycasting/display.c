@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:34:45 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/16 14:04:16 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/17 01:20:50 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ char		*ft_disp_col(struct cub3d *env, int x, char tex, int y)
 {
 	char	*tex_path;
 	int		height;
-
+	
+	env->color = 0;
 	if (tex == 'E')
 		height = env->tex_e->height;
 	if (tex == 'N')

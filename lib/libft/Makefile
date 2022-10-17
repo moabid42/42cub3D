@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: phperrot <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: moabid <moabid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 11:03:14 by phperrot          #+#    #+#              #
-#    Updated: 2019/11/19 12:09:20 by phperrot         ###   ########.fr        #
+#    Updated: 2022/10/16 22:00:49 by moabid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRC = ft_memset.c \
 	  ft_strjoin_free.c\
 	  ft_strtrim.c\
 	  ft_split.c\
+	  ft_isspace.c\
 	  ft_ctoa.c\
 	  ft_itoa.c\
 	  ft_itoa_long.c\

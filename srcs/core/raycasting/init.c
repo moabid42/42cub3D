@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:06:16 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/16 14:05:15 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/17 11:57:33 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,19 @@ void		init_env_2(struct cub3d *env, struct data arg)
 	env->minimap = 1;
 }
 
+//create a function that s gonna print the content of arg map
+void	printer_map(struct data *arg)
+{
+	t_map	*tmp;
+
+	tmp = arg->map;
+	while (tmp)
+	{
+		printf("[%s]\n", tmp->line);
+		tmp = tmp->next;
+	}
+}
+
 struct cub3d 		init_env(struct data arg)
 {
 	struct cub3d 	env;
@@ -66,6 +79,7 @@ struct cub3d 		init_env(struct data arg)
 	ft_bzero(&env.ray, sizeof(t_ray));
 	get_arg_for_env(&env, arg, 0, 0);
 	env.ray.speed = 0.1;
+	// printer_map(&arg);
 	if (!(env.map = from_lst_to_tab(arg.map)))
 	{
 		env.error = FROM_LST_ERROR;

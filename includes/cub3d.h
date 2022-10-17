@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:26:08 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/16 17:51:42 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/16 23:50:30 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,21 +106,15 @@ typedef struct				s_save
 	int						fd;
 }							t_save;
 
-struct				data
+struct						data
 {
+	int						line_index;
 	int						screen_w;
 	int						screen_h;
 	char					*no;
 	char					*so;
 	char					*we;
 	char					*ea;
-	char					*sprite;
-	char					*sprite1;
-	char					*door;
-	char					*bonus;
-	char					*ammo;
-	char					*ennemy;
-	char					*treasure;
 	t_rgb					floor;
 	t_rgb					ceil;
 	t_map					*map;
@@ -136,8 +130,6 @@ typedef	struct				s_tex
 	int						width;
 	int						height;
 	char					*type;
-	int						sprite_x;
-	int						sprite_y;
 }							t_tex;
 
 typedef	struct				s_img
@@ -322,6 +314,7 @@ int							ft_error(int error, struct cub3d *env);
 int							ft_error_arg(int error);
 int							ft_error_tex_inputs(int error, char *orientation);
 
+void	printer_map(struct data *arg);
 
 bool			cub3d_arg_check(int ac, char **av);
 

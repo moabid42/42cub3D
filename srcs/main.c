@@ -6,18 +6,119 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 09:15:57 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/16 17:59:50 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/17 01:07:24 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+bool	first_line_checker(char *line)
+{
+	int i;
+
+	i = 0;
+	while (line[i] != '\0')
+	{
+		if (line[i] != '1' && line[i] != ' ')
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
+bool	last_line_checker(char *line)
+{
+	int i;
+
+	i = 0;
+	while (line[i] != '\0')
+	{
+		if (line[i] != '1' && line[i] != ' ')
+			return (false);
+		i++;
+	}
+	printf("The last line is valid\n");
+	return (true);
+}
+
+bool	line_checker(char *prev_line, char *line, char *next_line)
+{
+	int j;
+
+	j = 0;
+	while (line[j] != '\0')
+	{
+		if (line[j] == '0')
+		{
+			// printf("The char is : %c\n", line[j]);
+			// printf("The prev char is : %c\n", prev_line[j]);
+			// printf("The next char is : %c\n", next_line[j]);
+			// printf("----------------------\n");
+			if (line[j + 1] == ' ' || line[j - 1] == ' '
+				|| prev_line[j] == ' ' || next_line[j] == ' ')
+				return (false);
+		}
+		j++;
+	}
+	return (true);
+}
+
+void	printer_map_2(t_map *map)
+{
+	t_map *tmp;
+
+	tmp = map;
+	while (tmp != NULL)
+	{
+		printf("[%s]\n", tmp->line);
+		tmp = tmp->next;
+	}
+}
+
+bool			cub3d_check_map(t_map *map)
+{
+	t_map *tmp;
+	t_map *prev_line;
+	t_map *next_line;
+	int	i;
+
+	i = 0;
+	tmp = map;
+	if (tmp->next)
+		next_line = tmp->next;
+	prev_line = map;
+	printer_map_2(map);
+	while (tmp)
+	{
+		if (i == 0 && first_line_checker(tmp->line) == false)
+			return (false);
+		else if (tmp->next == NULL && last_line_checker(tmp->line) == false)
+		{
+			printf("The error is in the last line\n");
+			return (false);
+		}
+		else
+		{
+			// printf("hi\n");
+			if (line_checker(prev_line->line, tmp->line, next_line->line) == false)
+				return (false);
+		}
+		i++;
+		prev_line = tmp;
+		tmp = tmp->next;
+		if (tmp)
+			next_line = tmp->next;
+	}
+	// printf("The i is : %d\n", i);
+	return (true);
+}
+
 int			launch_env(struct data arg, int ac)
 {
 	struct cub3d 	env;
 
-	if (check_map(arg.map, 0, 0) != SUCCESS)
-		return (MAP_ERROR);
+	// if (cub3d_check_map(arg.map) == false)
+	// 	return (MAP_ERROR);
 	env = init_env(arg);
 	if (ac == 3)
 		env.save_flag = 1;
@@ -44,6 +145,7 @@ bool	cub3d_create(struct data *arg, char *file)
 	ret = 0;
 	fd1 = open(file, O_RDWR);
 	line = get_next_line(fd1);
+	arg->line_index = 0;
 	while (line)
 	{
 		new_line_remove(line);
@@ -51,6 +153,7 @@ bool	cub3d_create(struct data *arg, char *file)
 			return (ARGUMENT_ERROR);
 		free(line);
 		line = get_next_line(fd1);
+		arg->line_index++;
 	}
 	if (line)
 		free(line);
