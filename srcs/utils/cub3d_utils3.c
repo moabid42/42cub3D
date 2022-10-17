@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:27:28 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/17 01:21:01 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/17 14:44:49 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,47 +38,37 @@ void		pixel_tex(t_tex *tex, struct cub3d *env)
 
 char		*get_output_wall(struct cub3d *env)
 {
-	if (env->ray.stepx < 0 && env->ray.rmapx < (int)env->ray.\
-rposx && env->ray.wall == 0)
+	// ray_informations_printer(env);
+	if (env->ray.stepx < 0 && env->ray.rmapx < (int)env->ray.rposx && env->ray.wall == 0)
 	{
 		pixel_tex(env->tex_e, env);
 		return (env->arg.ea);
 	}
-	if (env->ray.stepx > 0 && env->ray.rmapx > (int)env->ray.rposx\
+	if (env->ray.stepx > 0 && env->ray.rmapx > (int)env->ray.rposx
 	&& env->ray.wall == 0)
 	{
 		pixel_tex(env->tex_w, env);
 		return (env->arg.we);
 	}
-	if (env->ray.stepy < 0 && env->ray.rmapy < (int)env->ray.rposy &&\
+	if (env->ray.stepy < 0 && env->ray.rmapy < (int)env->ray.rposy &&
 	env->ray.wall - 0)
 	{
 		pixel_tex(env->tex_n, env);
 		return (env->arg.no);
 	}
-	if (env->ray.stepy > 0 && env->ray.rmapy > (int)\
-	env->ray.rposy && env->ray.wall == 1)
+	if (env->ray.stepy > 0 && env->ray.rmapy > (int)env->ray.rposy && env->ray.wall == 1)
+	{
 		pixel_tex(env->tex_s, env);
+	}
 	return (env->arg.so);
 }
 
-char		*pix_color(struct cub3d *env, int sprite)
+char		*pix_color(struct cub3d *env)
 {
 	char	*output;
 
 	output = NULL;
-	env = NULL;	
-	// output = get_output_wall(env);
-	// if (env->ray.door)
-	// {
-	// 	pixel_tex(env->tex_door, env);
-	// 	output = env->arg.door;
-	// }
-	// if (sprite && env->ray.sprite)
-	// {
-	// 	pixel_tex(env->tex_sprite, env);
-	// 	output = env->arg.sprite;
-	// }
+	output = get_output_wall(env);
 	return (output);
 }
 

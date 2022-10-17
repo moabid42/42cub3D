@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:26:08 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/16 23:50:30 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/17 14:45:02 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,7 +286,7 @@ void						ft_lstclear_map(t_map **lst);
 char						**from_lst_to_tab(t_map *lst);
 t_img						*ft_new_image(struct cub3d *env, int width, int height);
 void						pixel_tex(t_tex *tex, struct cub3d *env);
-char						*pix_color(struct cub3d *env, int sprite);
+char						*pix_color(struct cub3d *env);
 void						draw_rectangle(struct cub3d env, int width, int h,\
 		int x, int y, int c);
 void						open_door(struct cub3d *env, char c, int x, int y);
@@ -315,6 +315,8 @@ int							ft_error_arg(int error);
 int							ft_error_tex_inputs(int error, char *orientation);
 
 void	printer_map(struct data *arg);
+
+void	ray_informations_printer(struct cub3d *cub3d);
 
 bool			cub3d_arg_check(int ac, char **av);
 

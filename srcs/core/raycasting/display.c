@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:34:45 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/17 01:20:50 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/17 14:44:52 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ char		*ft_disp_col(struct cub3d *env, int x, char tex, int y)
 {
 	char	*tex_path;
 	int		height;
-	
-	env->color = 0;
+
 	if (tex == 'E')
 		height = env->tex_e->height;
 	if (tex == 'N')
@@ -37,11 +36,13 @@ char		*ft_disp_col(struct cub3d *env, int x, char tex, int y)
 		height = env->tex_s->height;
 	while (y < env->ray.wstart)
 		ft_put_pixel(env->img, env->ceil, x, y++);
+	// ray_informations_printer(env);
 	while (y >= env->ray.wstart && y <= env->ray.wend)
 	{
 		env->ray.tex_y = (int)env->ray.tex_pos & (height - 1);
 		env->ray.tex_pos += env->ray.step_tex;
-		tex_path = pix_color(env, 0);
+		// ray_informations_printer(env);
+		tex_path = pix_color(env);
 		ft_put_pixel(env->img, env->color, x, y);
 		y++;
 	}
