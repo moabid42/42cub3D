@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:06:16 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/17 14:43:52 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/17 23:03:46 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ struct cub3d 		init_env(struct data arg)
 	ft_bzero(&env, sizeof(struct cub3d ));
 	ft_bzero(&env.ray, sizeof(t_ray));
 	get_arg_for_env(&env, arg, 0, 0);
-	env.ray.speed = 0.15;
+	env.ray.speed = 0.3;
 	// printer_map(&arg);
 	if (!(env.map = from_lst_to_tab(arg.map)))
 	{

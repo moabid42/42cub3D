@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 09:15:57 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/17 01:07:24 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/17 23:00:42 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,45 +87,55 @@ bool			cub3d_check_map(t_map *map)
 	if (tmp->next)
 		next_line = tmp->next;
 	prev_line = map;
-	printer_map_2(map);
-	while (tmp)
+	//printer_map_2(map);
+	while (tmp != NULL)
 	{
-		if (i == 0 && first_line_checker(tmp->line) == false)
-			return (false);
-		else if (tmp->next == NULL && last_line_checker(tmp->line) == false)
+		if (i == 0)
 		{
-			printf("The error is in the last line\n");
-			return (false);
+			if (first_line_checker(tmp->line) == false)
+				{
+					printf("The first line is not valid\n");
+					return (false);
+				}
+		}
+		else if (tmp->next == NULL)
+		{
+			if (last_line_checker(tmp->line) == false)
+				{
+					printf("The last line is not valid\n");
+					return (false);
+				}
 		}
 		else
 		{
-			// printf("hi\n");
 			if (line_checker(prev_line->line, tmp->line, next_line->line) == false)
-				return (false);
+				{
+					printf("The %d line is not valid\n", i + 1);
+					return (false);
+				}
 		}
-		i++;
 		prev_line = tmp;
 		tmp = tmp->next;
 		if (tmp)
 			next_line = tmp->next;
+		i++;
 	}
-	// printf("The i is : %d\n", i);
 	return (true);
 }
-
+/// @brief ------------------------------>
 int			launch_env(struct data arg, int ac)
 {
 	struct cub3d 	env;
 
-	// if (cub3d_check_map(arg.map) == false)
-	// 	return (MAP_ERROR);
+	if (cub3d_check_map(arg.map) == false)
+		return (MAP_ERROR);
 	env = init_env(arg);
 	if (ac == 3)
 		env.save_flag = 1;
 	events(env);
 	return (true);
 }
-
+/////////////////*///////////////////////
 void    new_line_remove(char *line)
 {
     int i;
@@ -148,7 +158,8 @@ bool	cub3d_create(struct data *arg, char *file)
 	arg->line_index = 0;
 	while (line)
 	{
-		new_line_remove(line);
+		if (ft_strchr(line, '\n'))
+			new_line_remove(line);
 		if (fetch_arguments(arg, line) != SUCCESS)
 			return (ARGUMENT_ERROR);
 		free(line);

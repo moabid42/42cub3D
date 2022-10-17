@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:26:08 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/17 14:45:02 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/17 23:02:27 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -320,6 +320,7 @@ void	ray_informations_printer(struct cub3d *cub3d);
 
 bool			cub3d_arg_check(int ac, char **av);
 
+
 #	define INVISI_CHAR "\t\v\r\f "
 #	define KEY_UP 13
 #	define KEY_RIGHT 2
@@ -339,6 +340,8 @@ bool			cub3d_arg_check(int ac, char **av);
 #	define BYTES_PER_PIX 3
 #	define SCREEN_MAX_HEIGHT 1440
 #	define SCREEN_MAX_WIDTH 2560
+
+#	define SPEED	1
 
 #	define HEIGHT 1440
 #	define WIDTH 2560
