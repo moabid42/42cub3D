@@ -37,9 +37,5 @@ bool	cub3d_create(struct data *arg, char *file)
 		line = get_next_line(fd1);
 		arg->line_index++;
 	}
-	if (line)
-		free(line);
-	if (ret == -1)
-		return (ft_error_arg(FILE_READ_ERROR));
 	return (true);
 }

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:22:46 by phperrot          #+#    #+#             */
-/*   Updated: 2020/02/20 08:31:18 by phperrot         ###   ########.fr       */
+/*   Updated: 2022/10/18 16:36:55 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int			check_map_same_size(t_map *map)
+int			check_map_same_size(struct s_map *map)
 {
-	t_map	*tmp;
+	struct s_map 	*tmp;
 	int		size;
 
 	tmp = map;
@@ -28,9 +28,9 @@ int			check_map_same_size(t_map *map)
 	return (SUCCESS);
 }
 
-int			check_non_square_map(t_map *tmp, t_map *previous, int i, int j)
+int			check_non_square_map(struct s_map *tmp, struct s_map *previous, int i, int j)
 {
-	t_map *next;
+	struct s_map *next;
 
 	tmp = tmp->next;
 	next = tmp->next;
@@ -56,9 +56,9 @@ int			check_non_square_map(t_map *tmp, t_map *previous, int i, int j)
 	return (SUCCESS);
 }
 
-int			check_map_closed(t_map *map)
+int			check_map_closed(struct s_map *map)
 {
-	t_map	*tmp;
+	struct s_map 	*tmp;
 	int		i;
 
 	tmp = map;
@@ -85,9 +85,9 @@ int			check_map_closed(t_map *map)
 	return (SUCCESS);
 }
 
-int			check_map(t_map *map, int count_pos, int i)
+int			check_map(struct s_map *map, int count_pos, int i)
 {
-	t_map	*tmp;
+	struct s_map 	*tmp;
 
 	tmp = map;
 	while (tmp)

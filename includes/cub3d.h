@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:26:08 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 16:26:57 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 16:37:57 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,18 @@
 
 
 
-typedef struct				s_rgb
+struct				s_rgb
 {
 	int						r;
 	int						g;
 	int						b;
-}							t_rgb;
+};
 
-typedef struct				s_map
+struct				s_map
 {
 	char					*line;
 	struct s_map			*next;
-}							t_map;
+};
 
 struct						data
 {
@@ -51,9 +51,9 @@ struct						data
 	char					*so;
 	char					*we;
 	char					*ea;
-	t_rgb					floor;
-	t_rgb					ceil;
-	t_map					*map;
+	struct s_rgb 					floor;
+	struct s_rgb 					ceil;
+	struct s_map 					*map;
 };
 
 typedef	struct				s_tex
@@ -67,7 +67,7 @@ typedef	struct				s_tex
 	int						height;
 }							t_tex;
 
-typedef	struct				s_img
+struct						s_img
 {
 	void					*img_ptr;
 	int						*img_data;
@@ -76,7 +76,7 @@ typedef	struct				s_img
 	int						endian;
 	int						width;
 	int						height;
-}							t_img;
+};
 
 typedef struct				s_ray
 {
@@ -127,7 +127,7 @@ struct						cub3d
 	int						error;
 	long long				move_flag;
 	t_ray					ray;
-	t_img					*img;
+	struct s_img 					*img;
 	t_tex					*tex_s;
 	t_tex					*tex_n;
 	t_tex					*tex_w;
@@ -141,16 +141,11 @@ int							check_path(struct data *arg, char *buff);
 int							check_path1(char *orientation, char \
 		*buff, int i, struct data *arg);
 
-int							check_map(t_map *map, int count_pos, int i);
-
 t_tex						*ft_new_tex(struct cub3d *env, char *file, char *type);
-int							init_items(struct cub3d *env);
 struct cub3d				env_create(struct data arg);
-t_img						*ft_new_img(struct cub3d *env, char *file);
 
-int							from_rgb_to_hex(t_rgb color);
+int							from_rgb_to_hex(struct s_rgb  color);
 void						player_create(struct cub3d *env, struct data a, int y, int x);
-t_img						*ft_new_img(struct cub3d *env, char *file);
 
 int							ft_exit(struct cub3d *env);
 bool						cub3d_run(struct cub3d env);
@@ -158,7 +153,7 @@ bool						cub3d_run(struct cub3d env);
 void						ft_move(struct cub3d *env);
 
 int							ft_disp_screen(struct cub3d *env, int x);
-int							ft_put_pixel(t_img *img, unsigned int\
+int							ft_put_pixel(struct s_img  *img, unsigned int\
 		color, int p_x, int p_y);
 
 
@@ -170,31 +165,24 @@ void						ft_wall_tex(struct cub3d *env, char tex);
 
 
 int							count_char(char *str, char c);
-t_map						*ft_lstlast_map(t_map *lst);
-t_map						*ft_lstnew_map(void *content);
-char						*withdraw_char(char *str, char c);
-void						ft_lstadd_back_map(t_map **alst, t_map *new);
-int							ft_lstsize_map(t_map *lst);
-void						ft_lstclear_map(t_map **lst);
-char						**map_list_create(t_map *lst);
-t_img						*ft_new_image(struct cub3d *env, int width, int height);
+struct s_map 						*ft_lstlast_map(struct s_map *lst);
+struct s_map 						*ft_lstnew_map(void *content);
+void						ft_lstadd_back_map(struct s_map **alst, struct s_map *new);
+int							ft_lstsize_map(struct s_map *lst);
+char						**map_list_create(struct s_map *lst);
+struct s_img 						*ft_new_image(struct cub3d *env, int width, int height);
 void						pixel_tex(t_tex *tex, struct cub3d *env);
 char						*pix_color(struct cub3d *env);
-double						ft_abs(double x);
 
 
 void						ft_free_tex(struct cub3d *env, t_tex *tex);
-void						ft_free_img(struct cub3d *env, t_img *img);
+void						ft_free_img(struct cub3d *env, struct s_img  *img);
 
 int							texture_init(struct cub3d *env);
 
 int							ft_error(int error, struct cub3d *env);
 int							ft_error_arg(int error);
 int							ft_error_tex_inputs(int error, char *orientation);
-
-void						printer_map(struct data *arg);
-
-void						ray_informations_printer(struct cub3d *cub3d);
 
 bool						cub3d_arg_check(int ac, char **av);
 
@@ -204,7 +192,7 @@ bool						line_isnotempty(struct data *arg, char *line);
 
 int	error(int error);
 
-bool						cub3d_check_map(t_map *map, int i);
+bool						cub3d_check_map(struct s_map *map, int i);
 
 bool						cub3d_create(struct data *arg, char *file);
 

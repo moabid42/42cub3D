@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:59:14 by moabid            #+#    #+#             */
-/*   Updated: 2022/10/18 13:38:08 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 16:36:26 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ bool	line_checker(char *prev_line, char *line, char *next_line)
 	return (true);
 }
 
-bool			cub3d_check_map(t_map *map, int i)
+bool			cub3d_check_map(struct s_map *map, int i)
 {
-	t_map *tmp;
-	t_map *prev_line;
-	t_map *next_line;
+	struct s_map *tmp;
+	struct s_map *prev_line;
+	struct s_map *next_line;
 
 	tmp = map;
 	if (tmp->next)

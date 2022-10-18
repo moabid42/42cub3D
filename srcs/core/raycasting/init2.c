@@ -6,20 +6,20 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:09:40 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 16:31:12 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 16:37:57 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	inline	from_rgb_to_hex(t_rgb color)
+int	inline	from_rgb_to_hex(struct s_rgb  color)
 {
 	return (256 * 256 * color.r + 256 * color.g + color.b);
 }
 
 void		player_create(struct cub3d *env, struct data arg, int y, int x)
 {
-	t_map	*tmp;
+	struct s_map 	*tmp;
 
 	tmp = arg.map;
 	while (tmp)
@@ -40,11 +40,11 @@ void		player_create(struct cub3d *env, struct data arg, int y, int x)
 	}
 }
 
-t_img		*ft_new_img(struct cub3d *env, char *file)
+struct s_img 		*ft_new_img(struct cub3d *env, char *file)
 {
-	t_img	*img;
+	struct s_img 	*img;
 
-	if (!(img = malloc(sizeof(t_img))))
+	if (!(img = malloc(sizeof(struct s_img ))))
 	{
 		return (NULL);
 	}

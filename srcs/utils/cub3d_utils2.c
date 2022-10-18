@@ -6,15 +6,15 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:26:33 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 14:09:51 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 16:37:04 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_map		*ft_lstnew_map(void *content)
+struct s_map 		*ft_lstnew_map(void *content)
 {
-	t_map	*elem;
+	struct s_map 	*elem;
 
 	if (!(elem = malloc(sizeof(t_list))))
 		return (NULL);
@@ -23,9 +23,9 @@ t_map		*ft_lstnew_map(void *content)
 	return (elem);
 }
 
-void		ft_lstadd_back_map(t_map **alst, t_map *new)
+void		ft_lstadd_back_map(struct s_map **alst, struct s_map *new)
 {
-	t_map	*tmp;
+	struct s_map 	*tmp;
 
 	tmp = *alst;
 	if (*alst == NULL)
@@ -34,10 +34,10 @@ void		ft_lstadd_back_map(t_map **alst, t_map *new)
 		(ft_lstlast_map(*alst))->next = new;
 }
 
-void		ft_lstclear_map(t_map **lst)
+void		ft_lstclear_map(struct s_map **lst)
 {
-	t_map	*tmp;
-	t_map	*next;
+	struct s_map 	*tmp;
+	struct s_map 	*next;
 
 	if (!lst)
 		return ;
@@ -51,9 +51,9 @@ void		ft_lstclear_map(t_map **lst)
 	*lst = NULL;
 }
 
-int			ft_lstsize_map(t_map *lst)
+int			ft_lstsize_map(struct s_map *lst)
 {
-	t_map	*tmp;
+	struct s_map 	*tmp;
 	int		i;
 
 	i = 0;
@@ -68,9 +68,9 @@ int			ft_lstsize_map(t_map *lst)
 	return (i);
 }
 
-char		**map_list_create(t_map *lst)
+char		**map_list_create(struct s_map *lst)
 {
-	t_map	*tmp;
+	struct s_map 	*tmp;
 	int		i;
 	int		j;
 	char	**tab;

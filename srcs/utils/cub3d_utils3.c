@@ -6,17 +6,17 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:27:28 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/17 14:44:49 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 16:37:57 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_img		*ft_new_image(struct cub3d *env, int width, int height)
+struct s_img 		*ft_new_image(struct cub3d *env, int width, int height)
 {
-	t_img	*img;
+	struct s_img 	*img;
 
-	if (!(img = malloc(sizeof(t_img))))
+	if (!(img = malloc(sizeof(struct s_img ))))
 		return (NULL);
 	if (!(img->img_ptr = mlx_new_image(env->mlx_ptr, width, height)))
 		return (NULL);

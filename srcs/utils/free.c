@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:05:18 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/16 14:04:16 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 16:37:57 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_free_tex(struct cub3d *env, t_tex *tex)
 	}
 }
 
-void	ft_free_img(struct cub3d *env, t_img *img)
+void	ft_free_img(struct cub3d *env, struct s_img  *img)
 {
 	if (img)
 	{

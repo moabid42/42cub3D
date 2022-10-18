@@ -6,13 +6,13 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:34:45 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/17 14:44:52 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 16:37:57 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int			ft_put_pixel(t_img *img, unsigned int color, int p_x, int p_y)
+int			ft_put_pixel(struct s_img  *img, unsigned int color, int p_x, int p_y)
 {
 	if (p_y >= img->height || p_x >= img->width || p_x < 0\
 	|| p_y < 0 || ((p_y * img->width + p_x) >= (img->width * img->height - 1)))

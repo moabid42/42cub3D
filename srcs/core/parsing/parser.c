@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:37:21 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 01:43:57 by rdoukali         ###   ########.fr       */
+/*   Updated: 2022/10/18 16:36:47 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 int			get_map(struct data *arg, char *line)
 {
-	t_map	*tmp;
+	struct s_map 	*tmp;
 
 	if (!(tmp = ft_lstnew_map(ft_strdup(line))))
 		return (ERROR);
 	ft_lstadd_back_map(&(arg->map), tmp);
-	// printf("The content of the map is: %s\n", tmp->line);
 	return (SUCCESS);
 }
 
@@ -93,8 +92,5 @@ int			fetch_arguments(struct data *arg, char *line)
 			return (MAP_ERROR);
 		}
 	}
-	// printf("The character is %c\n", line[0]);
-	// if (!ft_isdigit(line[0]) && !ft_strchr("RNSEWSFC", line[0]))
-	// 	return (ft_error_arg(UNKNOW_ARG));
 	return (SUCCESS);
 }
