@@ -23,8 +23,6 @@ void	ft_error_tex(int error, struct cub3d *env)
 		ft_free_tex(env, env->tex_w);
 	if (env->tex_e)
 		ft_free_tex(env, env->tex_e);
-	if (env->tex_door)
-		ft_free_tex(env, env->tex_door);
 	ft_putstr("Error\nProblem with textures loading");
 }
 

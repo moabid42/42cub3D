@@ -21,7 +21,6 @@ int		ft_exit(struct cub3d *env)
 		ft_free_tex(env, env->tex_n);
 		ft_free_tex(env, env->tex_w);
 		ft_free_tex(env, env->tex_e);
-		ft_free_tex(env, env->tex_door);
 		mlx_destroy_window(env->mlx_ptr, env->win_ptr);
 	}
 	exit(0);

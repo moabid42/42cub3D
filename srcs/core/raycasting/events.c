@@ -67,13 +67,10 @@ int		ft_run(struct cub3d *env)
 
 bool		cub3d_run(struct cub3d env)
 {
-	while (env.save_flag && env.width % 4)
+	while (env.width % 4)
 		env.width++;
-	if (env.save_flag)
-	{
-		if (!(env.win_ptr = mlx_new_window(env.mlx_ptr, 1, 1, "Cub3D")))
-			return (false);
-	}
+    if (!(env.win_ptr = mlx_new_window(env.mlx_ptr, 1, 1, "Cub3D")))
+        return (false);
 	else
 	{
 		if (!(env.win_ptr = mlx_new_window(env.mlx_ptr, env.width, \

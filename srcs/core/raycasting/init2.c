@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:09:40 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 13:57:55 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 16:31:12 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,9 @@ void		player_create(struct cub3d *env, struct data arg, int y, int x)
 			}
 			x++;
 		}
-		env->map_width = x;
 		tmp = tmp->next;
 		y++;
 	}
-	env->map_height = y - 1;
 }
 
 t_img		*ft_new_img(struct cub3d *env, char *file)

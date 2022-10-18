@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 03:50:33 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 14:10:21 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 16:26:59 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ t_tex	*ft_new_tex(struct cub3d *env, char *file, char *type)
 		free(tex);
 		return (NULL);
 	}
-	tex->type = type;
 	return (tex);
 }
 

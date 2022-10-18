@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:06:16 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 14:08:10 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 16:31:00 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void		env_data_fill(struct cub3d *env, struct data arg)
 	env->mlx_ptr = mlx_init();
 	env->player_x += 0.5;
 	env->player_y += 0.5;
-	env->minimap = 1;
 }
 
 struct cub3d 		env_create(struct data arg)
@@ -68,7 +67,6 @@ struct cub3d 		env_create(struct data arg)
 	env.map = map_list_create(arg.map);
 	env_data_fill(&env, arg);
 	texture_init(&env);
-	env.map_height = ft_lstsize_map(env.arg.map);
 	if (init_raybuffer(&env) != SUCCESS)
 		ft_error(env.error, &env);
 	return (env);

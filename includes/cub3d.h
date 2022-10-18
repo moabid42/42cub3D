@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:26:08 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 14:09:59 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 16:26:57 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,26 +41,16 @@ typedef struct				s_map
 	struct s_map			*next;
 }							t_map;
 
-typedef struct				s_save
-{
-	int						height;
-	int						width;
-	int						pad;
-	unsigned char			*file_header;
-	unsigned char			*img_header;
-	int						fd;
-}							t_save;
-
 struct						data
 {
 	int						line_index;
 	int						screen_w;
 	int						screen_h;
 	int						map_flag;
-	char						*no;
-	char						*so;
-	char						*we;
-	char						*ea;
+	char					*no;
+	char					*so;
+	char					*we;
+	char					*ea;
 	t_rgb					floor;
 	t_rgb					ceil;
 	t_map					*map;
@@ -75,7 +65,6 @@ typedef	struct				s_tex
 	int						endian;
 	int						width;
 	int						height;
-	char					*type;
 }							t_tex;
 
 typedef	struct				s_img
@@ -120,14 +109,7 @@ typedef struct				s_ray
 	double					dist;
 	double					speed;
 	double					*zbuffer;
-	double					spend;
 }							t_ray;
-
-typedef struct				s_pos
-{
-	int						x;
-	int						y;
-}							t_pos;
 
 struct						cub3d
 {
@@ -135,8 +117,6 @@ struct						cub3d
 	void					*win_ptr;
 	struct data				arg;
 	char					**map;
-	int						map_height;
-	int						map_width;
 	double					player_x;
 	double					player_y;
 	char					orientation;
@@ -152,11 +132,7 @@ struct						cub3d
 	t_tex					*tex_n;
 	t_tex					*tex_w;
 	t_tex					*tex_e;
-	t_tex					*tex_door;
-	t_tex					*tex_floor;
-	int						save_flag;
 	unsigned int			color;
-	int						minimap;
 };
 
 int							fetch_arguments(struct data *arg, char *buff);
@@ -206,12 +182,6 @@ void						pixel_tex(t_tex *tex, struct cub3d *env);
 char						*pix_color(struct cub3d *env);
 double						ft_abs(double x);
 
-
-unsigned char				*create_file_header(struct cub3d *env, int pad);
-unsigned char				*create_img_header(int height, int width);
-int							write_headers(t_save *save);
-int							write_colors(struct cub3d *env, int fd, int height,\
-		int width);
 
 void						ft_free_tex(struct cub3d *env, t_tex *tex);
 void						ft_free_img(struct cub3d *env, t_img *img);
