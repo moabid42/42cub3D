@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:26:08 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 17:38:13 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 18:21:51 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ struct						cub3d
 	int						error;
 	long long				move_flag;
 	t_ray					ray;
-	struct s_img 					*img;
+	struct s_img 			*img;
 	t_tex					*tex_s;
 	t_tex					*tex_n;
 	t_tex					*tex_w;
@@ -152,7 +152,7 @@ bool						cub3d_run(struct cub3d env);
 
 void						movements_create(struct cub3d *env);
 
-int							ft_disp_screen(struct cub3d *env, int x);
+int							frames_display(struct cub3d *env, int x);
 int							ft_put_pixel(struct s_img  *img, unsigned int\
 		color, int p_x, int p_y);
 

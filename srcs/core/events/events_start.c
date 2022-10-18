@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   events_start.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:00:20 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 17:20:21 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 18:12:49 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		ft_key_hit(int key, struct cub3d *env)
+int		key_hold(int key, struct cub3d *env)
 {
 	if (key == KEY_UP)
 		env->move_flag |= 1;
@@ -32,7 +32,7 @@ int		ft_key_hit(int key, struct cub3d *env)
 }
 
 
-int		ft_key_release(int key, struct cub3d *env)
+int		key_release(int key, struct cub3d *env)
 {
 	if (key == KEY_UP)
 		env->move_flag &= (~(1 << 0));
@@ -49,7 +49,7 @@ int		ft_key_release(int key, struct cub3d *env)
 	return (SUCCESS);
 }
 
-int		ft_run(struct cub3d *env)
+int		frames_run(struct cub3d *env)
 {
 	ft_free_img(env, env->img);
 	if ((env->img = ft_new_image(env, env->width, env->height)) == NULL)
@@ -59,7 +59,7 @@ int		ft_run(struct cub3d *env)
 		return (IMG_ERROR);
 	}
 	movements_create(env);
-	ft_disp_screen(env, 0);
+	frames_display(env, 0);
 	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img->img_ptr, 0,
 		0);
 	return (SUCCESS);
@@ -78,9 +78,9 @@ bool		cub3d_run(struct cub3d env)
 			return (false);
 	}
 	mlx_hook(env.win_ptr, 17, STRUCTURENOTIFYMASK, ft_exit, &env);
-	mlx_hook(env.win_ptr, KEYPRESS, KEYPRESSMASK, ft_key_hit, &env);
-	mlx_hook(env.win_ptr, KEYRELEASE, KEYRELEASEMASK, ft_key_release, &env);
-	mlx_loop_hook(env.mlx_ptr, ft_run, &env);
+	mlx_hook(env.win_ptr, KEYPRESS, KEYPRESSMASK, key_hold, &env);
+	mlx_hook(env.win_ptr, KEYRELEASE, KEYRELEASEMASK, key_release, &env);
+	mlx_loop_hook(env.mlx_ptr, frames_run, &env);
 	mlx_loop(env.mlx_ptr);
 	return (true);
 }
