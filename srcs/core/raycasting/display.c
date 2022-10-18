@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:34:45 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 18:21:12 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 18:22:11 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			ft_put_pixel(struct s_img  *img, unsigned int color, int p_x, int p_y)
 {
-	if (p_y >= img->height || p_x >= img->width || p_x < 0\
+	if (p_y >= img->height || p_x >= img->width || p_x < 0
 	|| p_y < 0 || ((p_y * img->width + p_x) >= (img->width * img->height - 1)))
 		return (PIXEL_ERROR);
 	img->img_data[p_y * img->width + p_x] = color;

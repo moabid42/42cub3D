@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 23:24:51 by moabid            #+#    #+#             */
-/*   Updated: 2022/10/18 13:21:39 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 18:27:52 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ typedef	enum				e_error
 #	define KEY_EXIT 53
 #	define STRUCTURENOTIFYMASK 10001
 
-#	define SPEED	0.1
-#	define ROTATION_SPEED 0.1
+#	define SPEED	0.2
+#	define ROTATION_SPEED 0.2
 
 #	define HEIGHT 1440
 #	define WIDTH 2560

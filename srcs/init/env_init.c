@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:06:16 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 16:31:00 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 18:23:09 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,29 @@ void		env_data_fill(struct cub3d *env, struct data arg)
 	env->mlx_ptr = mlx_init();
 	env->player_x += 0.5;
 	env->player_y += 0.5;
+}
+
+void		player_create(struct cub3d *env, struct data arg, int y, int x)
+{
+	struct s_map 	*tmp;
+
+	tmp = arg.map;
+	while (tmp)
+	{
+		x = 0;
+		while (tmp->line[x] != '\0')
+		{
+			if (ft_strchr("NSWE", tmp->line[x]))
+			{
+				env->orientation = tmp->line[x];
+				env->player_x = x++;
+				env->player_y = y++;
+			}
+			x++;
+		}
+		tmp = tmp->next;
+		y++;
+	}
 }
 
 struct cub3d 		env_create(struct data arg)

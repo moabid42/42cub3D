@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:23:11 by moabid            #+#    #+#             */
-/*   Updated: 2022/10/18 17:37:13 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 18:27:19 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@
 
 void    right_translation(struct cub3d *env)
 {
-    if (ft_strchr("0SWENBAOFQT", env->map[(int)(env->player_y - env->
+    if (ft_strchr("0SWEN", env->map[(int)(env->player_y - env->
 		    ray.dirx * env->ray.speed)][(int)(env->player_x)]))
 		env->player_y += -env->ray.dirx * env->ray.speed;
-	if (ft_strchr("0SWENBAOFQT", env->map[(int)(env->player_y)]
+	if (ft_strchr("0SWEN", env->map[(int)(env->player_y)]
             [(int)(env->player_x + env->ray.diry * env->ray.speed)]))
 		env->player_x += env->ray.diry * env->ray.speed;
 }
 
 void    left_translation(struct cub3d *env)
 {
-    if (ft_strchr("0SWENBAOFQT", env->map[(int)(env->player_y + env->
+    if (ft_strchr("0SWEN", env->map[(int)(env->player_y + env->
 	        ray.dirx * env->ray.speed)][(int)(env->player_x)]))
 		env->player_y -= -env->ray.dirx * env->ray.speed;
-	if (ft_strchr("0SWENBAOFQT", env->map[(int)(env->player_y)]
+	if (ft_strchr("0SWEN", env->map[(int)(env->player_y)]
             [(int)(env->player_x - env->ray.diry * env->ray.speed)]))
 		env->player_x -= env->ray.diry * env->ray.speed;
 }
@@ -38,20 +38,20 @@ void    left_translation(struct cub3d *env)
 
 void	move_up(struct cub3d *env)
 {
-	if (ft_strchr("0SWENBAOFQT", env->map[(int)(env->player_y)]
+	if (ft_strchr("0SWEN", env->map[(int)(env->player_y)]
 	[(int)(env->player_x + env->ray.dirx * env->ray.speed)]))
 		env->player_x += env->ray.dirx * env->ray.speed;
-	if (ft_strchr("0SWENBAOFQT", env->map[(int)(env->player_y +
+	if (ft_strchr("0SWEN", env->map[(int)(env->player_y +
 		    env->ray.diry * env->ray.speed)][(int)(env->player_x)]))
 		env->player_y += env->ray.diry * env->ray.speed;
 }
 
 void    move_down(struct cub3d *env)
 {
-    if (ft_strchr("0SWENBAOFQT", env->map[(int)(env->player_y)]
+    if (ft_strchr("0SWEN", env->map[(int)(env->player_y)]
     [(int)(env->player_x - env->ray.dirx * env->ray.speed)]))
 		env->player_x -= env->ray.dirx * env->ray.speed;
-	if (ft_strchr("0SWENBAOFQT", env->map[(int)(env->player_y -
+	if (ft_strchr("0SWEN", env->map[(int)(env->player_y -
 		    env->ray.diry * env->ray.speed)][(int)(env->player_x)]))
 		env->player_y -= env->ray.diry * env->ray.speed;
 }

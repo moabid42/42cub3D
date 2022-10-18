@@ -6,18 +6,11 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:05:58 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 16:36:59 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 18:25:09 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-double		ft_abs(double x)
-{
-	if (x < 0)
-		x = -x;
-	return (x);
-}
 
 int			count_char(char *str, char c)
 {
