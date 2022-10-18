@@ -26,17 +26,17 @@ void		init_env_orientation(struct cub3d *env)
 		env->ray.diry = -0.99;
 		env->ray.planex = -0.80;
 	}
-	if (env->orientation == 'S')
+	else if (env->orientation == 'S')
 	{
 		env->ray.diry = 0.99;
 		env->ray.planex = 0.80;
 	}
-	if (env->orientation == 'E')
+	else if (env->orientation == 'E')
 	{
 		env->ray.dirx = 0.99;
 		env->ray.planey = -0.80;
 	}
-	if (env->orientation == 'W')
+	else if (env->orientation == 'W')
 	{
 		env->ray.dirx = -0.99;
 		env->ray.planey = 0.80;

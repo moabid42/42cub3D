@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:26:08 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 16:37:57 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 17:38:13 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ void						player_create(struct cub3d *env, struct data a, int y, int x);
 int							ft_exit(struct cub3d *env);
 bool						cub3d_run(struct cub3d env);
 
-void						ft_move(struct cub3d *env);
+void						movements_create(struct cub3d *env);
 
 int							ft_disp_screen(struct cub3d *env, int x);
 int							ft_put_pixel(struct s_img  *img, unsigned int\
@@ -195,5 +195,22 @@ int	error(int error);
 bool						cub3d_check_map(struct s_map *map, int i);
 
 bool						cub3d_create(struct data *arg, char *file);
+
+
+///////////////////////////////
+//          events.c         //
+///////////////////////////////
+
+void	movements_create(struct cub3d *env);
+
+void	linear_movement(struct cub3d *env);
+void	move_up(struct cub3d *env);
+void    move_down(struct cub3d *env);
+
+void	translation(struct cub3d *env);
+void    right_translation(struct cub3d *env);
+void    left_translation(struct cub3d *env);
+
+void	rotation(struct cub3d *env, int advance);
 
 #	endif

@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:00:20 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 13:12:33 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 17:20:21 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		ft_run(struct cub3d *env)
 		ft_error(env->error, env);
 		return (IMG_ERROR);
 	}
-	ft_move(env);
+	movements_create(env);
 	ft_disp_screen(env, 0);
 	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img->img_ptr, 0,
 		0);

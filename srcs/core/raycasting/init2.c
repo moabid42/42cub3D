@@ -39,27 +39,3 @@ void		player_create(struct cub3d *env, struct data arg, int y, int x)
 		y++;
 	}
 }
-
-struct s_img 		*ft_new_img(struct cub3d *env, char *file)
-{
-	struct s_img 	*img;
-
-	if (!(img = malloc(sizeof(struct s_img ))))
-	{
-		return (NULL);
-	}
-	if (!(img->img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, file,
-		&img->width, &img->height)))
-	{
-		free(img);
-		return (NULL);
-	}
-	if (!(img->img_data = (int *)mlx_get_data_addr(img->img_ptr, &img->bpp,
-		&img->size_line, &img->endian)))
-	{
-		free(img->img_ptr);
-		free(img);
-		return (NULL);
-	}
-	return (img);
-}
