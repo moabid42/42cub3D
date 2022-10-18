@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:26:33 by phperrot          #+#    #+#             */
-/*   Updated: 2020/02/18 14:29:55 by phperrot         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:09:51 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int			ft_lstsize_map(t_map *lst)
 	return (i);
 }
 
-char		**from_lst_to_tab(t_map *lst)
+char		**map_list_create(t_map *lst)
 {
 	t_map	*tmp;
 	int		i;

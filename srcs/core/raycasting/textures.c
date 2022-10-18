@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 03:50:33 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/16 14:04:16 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 14:10:21 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,9 @@ void	init_tex_wall_sprite(struct cub3d *env)
 		env->error = TEX_ERROR_W;
 	if ((env->tex_e = ft_new_tex(env, env->arg.ea, "EA")) == NULL)
 		env->error = TEX_ERROR_E;
-	// if ((env->tex_sprite = ft_new_tex(env, env->arg.sprite, "sprite")) == NULL)
-	// 	env->error = TEX_ERROR_SP;
 }
 
-int		init_tex(struct cub3d *env)
+int		texture_init(struct cub3d *env)
 {
 	env->error = 0;
 	init_tex_wall_sprite(env);

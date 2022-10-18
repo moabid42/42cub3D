@@ -5,28 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 15:43:51 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/17 14:31:37 by moabid           ###   ########.fr       */
+/*   Created: 2022/10/18 12:47:30 by moabid            #+#    #+#             */
+/*   Updated: 2022/10/18 12:47:32 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-//create a function that prints all the information in the struct ray
-void	ray_informations_printer(struct cub3d *cub3d)
-{
-	printf("I m inside ray_informations_printer\n");
-	printf("%f\n", cub3d->ray.camera);
-	printf("%f\n", cub3d->ray.rposx );
-	printf("%f\n", cub3d->ray.rposy);
-	printf("%f\n", cub3d->ray.rdirx);
-	printf("%f\n", cub3d->ray.rdiry);
-	printf("%f\n", cub3d->ray.rmapx);
-	printf("%f\n", cub3d->ray.rmapy);
-	printf("%f\n", cub3d->ray.rdisdx);
-	printf("%f\n", cub3d->ray.rdisdy);
-	printf("HIT %d\n", cub3d->ray.hit);
-}
 
 void		ft_init_ray(struct cub3d *env, int x)
 {

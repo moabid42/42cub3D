@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:53:06 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/16 14:04:16 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 14:07:32 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,17 @@ int		ft_error(int error, struct cub3d *env)
 		ft_error_tex(error, env);
 	ft_exit(env);
 	return (SUCCESS);
+}
+
+int	error(int error)
+{
+	if (error == INVALID_LINE)
+		ft_putstr_fd("cub3d: Invalid line", 2);
+	else if (error == NB_ARG_ERROR)
+		ft_putstr_fd("cub3d: Invalid Argument", 2);
+	else if (error == FILE_EXT_ERROR)
+		ft_putstr_fd("cub3d: Invalid File Extension", 2);
+	else if (error == FROM_LST_ERROR)
+		ft_putstr_fd("cub3d: Problem with map creation", 2);
+	return (false);
 }

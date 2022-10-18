@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:58:00 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/17 23:32:07 by rdoukali         ###   ########.fr       */
+/*   Updated: 2022/10/18 13:21:58 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,6 @@ void	ft_error_arg2(int error)
 
 int		ft_error_arg(int error)
 {
-	if (error == NB_ARG_ERROR_TOO_FEW)
-		ft_putstr("Error\nNot enough arguments");
-	if (error == NB_ARG_ERROR_TOO_MANY)
-		ft_putstr("Error\nToo many arguments");
 	if (error == FILE_EXT_ERROR)
 		ft_putstr("Error\nFirst argument is not a .cub file");
 	if (error == SAVE_FLAG_ERROR)
