@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:00:20 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 18:12:49 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 18:48:10 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 int		key_hold(int key, struct cub3d *env)
 {
 	if (key == KEY_UP)
-		env->move_flag |= 1;
+		set_flag(env->move_flag, 1);
 	else if (key == KEY_DOWN)
-		env->move_flag |= 2;
+		set_flag(env->move_flag, 2);
 	else if (key == ROTATE_LEFT)
-		env->move_flag |= 4;
+		set_flag(env->move_flag, 4);
 	else if (key == ROTATE_RIGHT)
-		env->move_flag |= 8;
+		set_flag(env->move_flag, 8);
 	else if (key == KEY_LEFT)
-		env->move_flag |= 16;
+		set_flag(env->move_flag, 16);
 	else if (key == KEY_RIGHT)
-		env->move_flag |= 32;
+		set_flag(env->move_flag, 32);
 	else if (key == KEY_EXIT)
 		ft_exit(env);
 	return (SUCCESS);
@@ -35,17 +35,17 @@ int		key_hold(int key, struct cub3d *env)
 int		key_release(int key, struct cub3d *env)
 {
 	if (key == KEY_UP)
-		env->move_flag &= (~(1 << 0));
+		unset_flag(env->move_flag, 0);
 	else if (key == KEY_DOWN)
-		env->move_flag &= (~(1 << 1));
+		unset_flag(env->move_flag, 1);
 	else if (key == ROTATE_LEFT)
-		env->move_flag &= (~(1 << 2));
+		unset_flag(env->move_flag, 2);
 	else if (key == ROTATE_RIGHT)
-		env->move_flag &= (~(1 << 3));
+		unset_flag(env->move_flag, 3);
 	else if (key == KEY_LEFT)
-		env->move_flag &= (~(1 << 4));
+		unset_flag(env->move_flag, 4);
 	else if (key == KEY_RIGHT)
-		env->move_flag &= (~(1 << 5));
+		unset_flag(env->move_flag, 5);
 	return (SUCCESS);
 }
 

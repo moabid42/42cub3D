@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 23:24:51 by moabid            #+#    #+#             */
-/*   Updated: 2022/10/18 18:27:52 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 18:47:17 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,7 @@ typedef	enum				e_error
 #	define HEIGHT 1440
 #	define WIDTH 2560
 
+#	define set_flag(flag, bit) (flag |= bit)
+#	define unset_flag(flag, bit) (flag &= (~(1 << bit)))
 
 #endif

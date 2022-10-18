@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:47:30 by moabid            #+#    #+#             */
-/*   Updated: 2022/10/18 12:47:32 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/18 18:45:47 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,7 @@ char		ft_hit_ray(struct cub3d *env, char wall_tex)
 			env->ray.rmapy += env->ray.stepy;
 			env->ray.wall = 1;
 		}
-		if (!ft_strchr("023ENSWBAOTFQ", env->map[env->ray.rmapy]\
-					[env->ray.rmapx]))
+		if (!ft_strchr("0", env->map[env->ray.rmapy][env->ray.rmapx]))
 			env->ray.hit = 1;
 		wall_tex = get_wall_tex(env);
 	}
