@@ -6,14 +6,14 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:47:30 by moabid            #+#    #+#             */
-/*   Updated: 2022/10/18 18:45:47 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 18:04:50 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 
-void		ft_init_ray(struct cub3d *env, int x)
+void		ft_init_ray(struct s_cub3d *env, int x)
 {
 	env->ray.camera = 2 * x / (double)(env->width) - 1;
 	env->ray.rposx = env->player_x;
@@ -29,7 +29,7 @@ void		ft_init_ray(struct cub3d *env, int x)
 	env->ray.hit = 0;
 }
 
-void		ft_direction_ray(struct cub3d *env)
+void		ft_direction_ray(struct s_cub3d *env)
 {
 	if (env->ray.rdirx > 0)
 	{
@@ -55,7 +55,7 @@ void		ft_direction_ray(struct cub3d *env)
 	}
 }
 
-char		get_wall_tex(struct cub3d *env)
+char		get_wall_tex(struct s_cub3d *env)
 {
 	char	wall_tex;
 
@@ -80,7 +80,7 @@ char		get_wall_tex(struct cub3d *env)
 	return (wall_tex);
 }
 
-char		ft_hit_ray(struct cub3d *env, char wall_tex)
+char		ft_hit_ray(struct s_cub3d *env, char wall_tex)
 {
 	while (env->ray.hit == 0)
 	{
@@ -103,7 +103,7 @@ char		ft_hit_ray(struct cub3d *env, char wall_tex)
 	return (wall_tex);
 }
 
-void		ft_size_ray(struct cub3d *env)
+void		ft_size_ray(struct s_cub3d *env)
 {
 	if (env->ray.wall == 0)
 		env->ray.dist = fabs((env->ray.rmapx - env->ray.rposx

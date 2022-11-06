@@ -6,14 +6,14 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 14:08:46 by moabid            #+#    #+#             */
-/*   Updated: 2022/10/18 13:20:01 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 18:04:16 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 
-bool	line_isnotempty(struct data *arg, char *line)
+bool	line_isnotempty(struct s_data *arg, char *line)
 {
 	if (arg->map_flag == 1)
 		if (line[0] == '\n' && line[1] == '\0')

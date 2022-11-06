@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:34:45 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 18:22:11 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 18:04:50 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int			ft_put_pixel(struct s_img  *img, unsigned int color, int p_x, int p_y)
 	return (SUCCESS);
 }
 
-char	*draw_pixels(struct cub3d *env, int x, int y, int height)
+char	*draw_pixels(struct s_cub3d *env, int x, int y, int height)
 {
 	char *tex_path;
 
@@ -39,7 +39,7 @@ char	*draw_pixels(struct cub3d *env, int x, int y, int height)
 		ft_put_pixel(env->img, env->floor, x, y++);
 	return (tex_path);
 }
-char		*display(struct cub3d *env, int x, char tex, int y)
+char		*display(struct s_cub3d *env, int x, char tex, int y)
 {
 	int		height;
 
@@ -54,7 +54,7 @@ char		*display(struct cub3d *env, int x, char tex, int y)
 	return (draw_pixels(env, x, y, height));
 }
 
-int			frames_display(struct cub3d *env, int x)
+int			frames_display(struct s_cub3d *env, int x)
 {
 	char tex;
 

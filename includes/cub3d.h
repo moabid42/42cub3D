@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:26:08 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/24 15:37:53 by rdoukali         ###   ########.fr       */
+/*   Updated: 2022/11/06 18:04:50 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ struct						s_cub3d
 {
 	void					*mlx_ptr;
 	void					*win_ptr;
-	struct data				arg;
+	struct s_data				arg;
 	char					**map;
 	double					player_x;
 	double					player_y;
@@ -132,27 +132,27 @@ struct						s_cub3d
 	unsigned int			color;
 };
 
-int							fetch_arguments(struct data *arg, char *buff);
-int							check_path(struct data *arg, char *buff);
+int							fetch_arguments(struct s_data *arg, char *buff);
+int							check_path(struct s_data *arg, char *buff);
 int							check_path1(char *orientation, char \
-		*buff, int i, struct data *arg);
-t_tex						*ft_new_tex(struct cub3d *env, char *file, \
+		*buff, int i, struct s_data *arg);
+t_tex						*ft_new_tex(struct s_cub3d *env, char *file, \
 		char *type);
-struct cub3d				env_create(struct data arg);
+struct s_cub3d				env_create(struct s_data arg);
 int							from_rgb_to_hex(struct s_rgb color);
-void						player_create(struct cub3d *env, struct data a, \
+void						player_create(struct s_cub3d *env, struct s_data a, \
 		int y, int x);
-int							ft_exit(struct cub3d *env);
-bool						cub3d_run(struct cub3d env);
-void						movements_create(struct cub3d *env);
-int							frames_display(struct cub3d *env, int x);
+int							ft_exit(struct s_cub3d *env);
+bool						cub3d_run(struct s_cub3d env);
+void						movements_create(struct s_cub3d *env);
+int							frames_display(struct s_cub3d *env, int x);
 int							ft_put_pixel(struct s_img *img, \
 		unsigned int color, int p_x, int p_y);
-void						ft_init_ray(struct cub3d *env, int x);
-void						ft_direction_ray(struct cub3d *env);
-char						ft_hit_ray(struct cub3d *env, char wall_tex);
-void						ft_size_ray(struct cub3d *env);
-void						ft_wall_tex(struct cub3d *env, char tex);
+void						ft_init_ray(struct s_cub3d *env, int x);
+void						ft_direction_ray(struct s_cub3d *env);
+char						ft_hit_ray(struct s_cub3d *env, char wall_tex);
+void						ft_size_ray(struct s_cub3d *env);
+void						ft_wall_tex(struct s_cub3d *env, char tex);
 int							count_char(char *str, char c);
 struct s_map				*ft_lstlast_map(struct s_map *lst);
 struct s_map				*ft_lstnew_map(void *content);
@@ -160,33 +160,33 @@ void						ft_lstadd_back_map(struct s_map **alst, \
 		struct s_map *new);
 int							ft_lstsize_map(struct s_map *lst);
 char						**map_list_create(struct s_map *lst);
-struct s_img				*ft_new_image(struct cub3d *env, \
+struct s_img				*ft_new_image(struct s_cub3d *env, \
 		int width, int height);
-void						pixel_tex(t_tex *tex, struct cub3d *env);
-char						*pix_color(struct cub3d *env);
-void						ft_free_tex(struct cub3d *env, t_tex *tex);
-void						ft_free_img(struct cub3d *env, struct s_img *img);
-int							texture_init(struct cub3d *env);
-int							ft_error(int error, struct cub3d *env);
+void						pixel_tex(t_tex *tex, struct s_cub3d *env);
+char						*pix_color(struct s_cub3d *env);
+void						ft_free_tex(struct s_cub3d *env, t_tex *tex);
+void						ft_free_img(struct s_cub3d *env, struct s_img *img);
+int							texture_init(struct s_cub3d *env);
+int							ft_error(int error, struct s_cub3d *env);
 int							ft_error_arg(int error);
 int							ft_error_tex_inputs(int error, char *orientation);
 bool						cub3d_arg_check(int ac, char **av);
 void						new_line_remove(char *line);
-bool						line_isnotempty(struct data *arg, char *line);
+bool						line_isnotempty(struct s_data *arg, char *line);
 int							error(int error);
 bool						cub3d_check_map(struct s_map *map, int i);
-bool						cub3d_create(struct data *arg, char *file);
+bool						cub3d_create(struct s_data *arg, char *file);
 
 ///////////////////////////////
 //          events.c         //
 ///////////////////////////////
 
-void						movements_create(struct cub3d *env);
-void						linear_movement(struct cub3d *env);
-void						move_up(struct cub3d *env);
-void						move_down(struct cub3d *env);
-void						translation(struct cub3d *env);
-void						right_translation(struct cub3d *env);
-void						left_translation(struct cub3d *env);
-void						rotation(struct cub3d *env, int advance);
+void						movements_create(struct s_cub3d *env);
+void						linear_movement(struct s_cub3d *env);
+void						move_up(struct s_cub3d *env);
+void						move_down(struct s_cub3d *env);
+void						translation(struct s_cub3d *env);
+void						right_translation(struct s_cub3d *env);
+void						left_translation(struct s_cub3d *env);
+void						rotation(struct s_cub3d *env, int advance);
 #	endif

@@ -6,13 +6,13 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:37:21 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 16:36:47 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 18:04:16 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int			get_map(struct data *arg, char *line)
+int			get_map(struct s_data *arg, char *line)
 {
 	struct s_map 	*tmp;
 
@@ -22,7 +22,7 @@ int			get_map(struct data *arg, char *line)
 	return (SUCCESS);
 }
 
-int			check_floor_ceil_b(struct data *arg, char *line, int i)
+int			check_floor_ceil_b(struct s_data *arg, char *line, int i)
 {
 	while (ft_isdigit(line[i]))
 		i++;
@@ -39,7 +39,7 @@ int			check_floor_ceil_b(struct data *arg, char *line, int i)
 	return (SUCCESS);
 }
 
-int			check_floor_ceil(struct data *arg, char *line)
+int			check_floor_ceil(struct s_data *arg, char *line)
 {
 	int i;
 
@@ -69,7 +69,7 @@ int			check_floor_ceil(struct data *arg, char *line)
 	return (SUCCESS);
 }
 
-int			fetch_arguments(struct data *arg, char *line)
+int			fetch_arguments(struct s_data *arg, char *line)
 {
 	if (line[0] == '\n' || line[0] == '\0')
 		return (SUCCESS);

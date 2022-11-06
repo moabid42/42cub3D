@@ -6,13 +6,13 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:56:05 by moabid            #+#    #+#             */
-/*   Updated: 2022/10/18 13:22:21 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 18:04:16 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	cub3d_create(struct data *arg, char *file)
+bool	cub3d_create(struct s_data *arg, char *file)
 {
 	int			fd1;
 	int			ret;

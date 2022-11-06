@@ -6,13 +6,13 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:27:28 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 16:37:57 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 18:04:50 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-struct s_img 		*ft_new_image(struct cub3d *env, int width, int height)
+struct s_img 		*ft_new_image(struct s_cub3d *env, int width, int height)
 {
 	struct s_img 	*img;
 
@@ -28,7 +28,7 @@ struct s_img 		*ft_new_image(struct cub3d *env, int width, int height)
 	return (img);
 }
 
-void		pixel_tex(t_tex *tex, struct cub3d *env)
+void		pixel_tex(t_tex *tex, struct s_cub3d *env)
 {
 	if (tex->width * env->ray.tex_y + env->ray.tex_x < (tex->width *\
 				tex->height))
@@ -36,7 +36,7 @@ void		pixel_tex(t_tex *tex, struct cub3d *env)
 					env->ray.tex_x];
 }
 
-char		*get_output_wall(struct cub3d *env)
+char		*get_output_wall(struct s_cub3d *env)
 {
 	// ray_informations_printer(env);
 	if (env->ray.stepx < 0 && env->ray.rmapx < (int)env->ray.rposx && env->ray.wall == 0)
@@ -63,7 +63,7 @@ char		*get_output_wall(struct cub3d *env)
 	return (env->arg.so);
 }
 
-char		*pix_color(struct cub3d *env)
+char		*pix_color(struct s_cub3d *env)
 {
 	char	*output;
 

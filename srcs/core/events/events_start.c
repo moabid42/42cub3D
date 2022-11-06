@@ -6,13 +6,13 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:00:20 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 18:48:10 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 18:04:50 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		key_hold(int key, struct cub3d *env)
+int		key_hold(int key, struct s_cub3d *env)
 {
 	if (key == KEY_UP)
 		set_flag(env->move_flag, 1);
@@ -32,7 +32,7 @@ int		key_hold(int key, struct cub3d *env)
 }
 
 
-int		key_release(int key, struct cub3d *env)
+int		key_release(int key, struct s_cub3d *env)
 {
 	if (key == KEY_UP)
 		unset_flag(env->move_flag, 0);
@@ -49,7 +49,7 @@ int		key_release(int key, struct cub3d *env)
 	return (SUCCESS);
 }
 
-int		frames_run(struct cub3d *env)
+int		frames_run(struct s_cub3d *env)
 {
 	ft_free_img(env, env->img);
 	if ((env->img = ft_new_image(env, env->width, env->height)) == NULL)
@@ -65,7 +65,7 @@ int		frames_run(struct cub3d *env)
 	return (SUCCESS);
 }
 
-bool		cub3d_run(struct cub3d env)
+bool		cub3d_run(struct s_cub3d env)
 {
 	while (env.width % 4)
 		env.width++;

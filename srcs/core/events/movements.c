@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:23:11 by moabid            #+#    #+#             */
-/*   Updated: 2022/10/18 18:27:19 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 18:04:50 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ///////////////////////////////////////////////////////////////////////
 
-void    right_translation(struct cub3d *env)
+void    right_translation(struct s_cub3d *env)
 {
     if (ft_strchr("0SWEN", env->map[(int)(env->player_y - env->
 		    ray.dirx * env->ray.speed)][(int)(env->player_x)]))
@@ -24,7 +24,7 @@ void    right_translation(struct cub3d *env)
 		env->player_x += env->ray.diry * env->ray.speed;
 }
 
-void    left_translation(struct cub3d *env)
+void    left_translation(struct s_cub3d *env)
 {
     if (ft_strchr("0SWEN", env->map[(int)(env->player_y + env->
 	        ray.dirx * env->ray.speed)][(int)(env->player_x)]))
@@ -36,7 +36,7 @@ void    left_translation(struct cub3d *env)
 
 ///////////////////////////////////////////////////////////////////////
 
-void	move_up(struct cub3d *env)
+void	move_up(struct s_cub3d *env)
 {
 	if (ft_strchr("0SWEN", env->map[(int)(env->player_y)]
 	[(int)(env->player_x + env->ray.dirx * env->ray.speed)]))
@@ -46,7 +46,7 @@ void	move_up(struct cub3d *env)
 		env->player_y += env->ray.diry * env->ray.speed;
 }
 
-void    move_down(struct cub3d *env)
+void    move_down(struct s_cub3d *env)
 {
     if (ft_strchr("0SWEN", env->map[(int)(env->player_y)]
     [(int)(env->player_x - env->ray.dirx * env->ray.speed)]))
@@ -58,7 +58,7 @@ void    move_down(struct cub3d *env)
 
 ///////////////////////////////////////////////////////////////////////
 
-void	rotation(struct cub3d *env, int advance)
+void	rotation(struct s_cub3d *env, int advance)
 {
 	double	dir;
 	double	plane;

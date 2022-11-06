@@ -6,13 +6,13 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:19:27 by moabid            #+#    #+#             */
-/*   Updated: 2022/10/18 17:37:17 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 18:04:50 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	translation(struct cub3d *env)
+void	translation(struct s_cub3d *env)
 {
 	if (env->move_flag & 16)
 		right_translation(env);
@@ -20,7 +20,7 @@ void	translation(struct cub3d *env)
 		left_translation(env);
 }
 
-void	linear_movement(struct cub3d *env)
+void	linear_movement(struct s_cub3d *env)
 {
 	if (env->move_flag & 1)
 		move_up(env);
@@ -28,7 +28,7 @@ void	linear_movement(struct cub3d *env)
 		move_down(env);
 }
 
-void	movements_create(struct cub3d *env)
+void	movements_create(struct s_cub3d *env)
 {
 	if (env->move_flag & 1 || env->move_flag & 2)
 		linear_movement(env);

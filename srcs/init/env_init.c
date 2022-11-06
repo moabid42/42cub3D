@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   env_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:06:16 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 18:23:09 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 18:04:50 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int			init_raybuffer(struct cub3d *env)
+int			init_raybuffer(struct s_cub3d *env)
 {
 	if (!(env->ray.zbuffer = malloc(sizeof(double) * (env->width + 1))))
 		return (ZBUFFER_ERROR);
 	return (SUCCESS);
 }
 
-void		init_env_orientation(struct cub3d *env)
+void		init_env_orientation(struct s_cub3d *env)
 {
 	if (env->orientation == 'N')
 	{
@@ -43,7 +43,7 @@ void		init_env_orientation(struct cub3d *env)
 	}
 }
 
-void		env_data_fill(struct cub3d *env, struct data arg)
+void		env_data_fill(struct s_cub3d *env, struct s_data arg)
 {
 	env->width = arg.screen_w;
 	env->height = arg.screen_h;
@@ -56,7 +56,7 @@ void		env_data_fill(struct cub3d *env, struct data arg)
 	env->player_y += 0.5;
 }
 
-void		player_create(struct cub3d *env, struct data arg, int y, int x)
+void		player_create(struct s_cub3d *env, struct s_data arg, int y, int x)
 {
 	struct s_map 	*tmp;
 
@@ -79,11 +79,11 @@ void		player_create(struct cub3d *env, struct data arg, int y, int x)
 	}
 }
 
-struct cub3d 		env_create(struct data arg)
+struct s_cub3d 		env_create(struct s_data arg)
 {
-	struct cub3d 	env;
+	struct s_cub3d 	env;
 
-	ft_bzero(&env, sizeof(struct cub3d ));
+	ft_bzero(&env, sizeof(struct s_cub3d ));
 	ft_bzero(&env.ray, sizeof(t_ray));
 	player_create(&env, arg, 0, 0);
 	env.ray.speed = SPEED;
