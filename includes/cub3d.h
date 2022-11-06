@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:26:08 by phperrot          #+#    #+#             */
-/*   Updated: 2022/11/06 18:07:36 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 20:06:15 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ struct						s_cub3d
 {
 	void					*mlx_ptr;
 	void					*win_ptr;
-	struct s_data				arg;
+	struct s_data			arg;
 	char					**map;
 	double					player_x;
 	double					player_y;

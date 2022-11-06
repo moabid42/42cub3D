@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:19:27 by moabid            #+#    #+#             */
-/*   Updated: 2022/11/06 18:04:50 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 20:22:26 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,3 @@ void	movements_create(struct s_cub3d *env)
 	if (env->move_flag & 8)
 		rotation(env, 1);
 }
-

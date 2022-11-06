@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:59:14 by moabid            #+#    #+#             */
-/*   Updated: 2022/10/18 16:36:26 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 20:16:11 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	first_line_checker(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i] != '\0')
@@ -28,7 +28,7 @@ bool	first_line_checker(char *line)
 
 bool	last_line_checker(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i] != '\0')
@@ -42,7 +42,7 @@ bool	last_line_checker(char *line)
 
 bool	line_checker(char *prev_line, char *line, char *next_line)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (line[j] != '\0')
@@ -58,16 +58,22 @@ bool	line_checker(char *prev_line, char *line, char *next_line)
 	return (true);
 }
 
-bool			cub3d_check_map(struct s_map *map, int i)
+void	init_vars(struct s_map **map, struct s_map **prev_line,
+					struct s_map **tmp, struct s_map **next_line)
 {
-	struct s_map *tmp;
-	struct s_map *prev_line;
-	struct s_map *next_line;
+	(*tmp) = (*map);
+	if ((*tmp)->next)
+		(*next_line) = (*tmp)->next;
+	(*prev_line) = (*map);
+}
 
-	tmp = map;
-	if (tmp->next)
-		next_line = tmp->next;
-	prev_line = map;
+bool	cub3d_check_map(struct s_map *map, int i)
+{
+	struct s_map	*tmp;
+	struct s_map	*prev_line;
+	struct s_map	*next_line;
+
+	init_vars(&map, &prev_line, &tmp, &next_line);
 	while (tmp != NULL)
 	{
 		if (i == 0 && first_line_checker(tmp->line) == false)
@@ -77,7 +83,8 @@ bool			cub3d_check_map(struct s_map *map, int i)
 			if (last_line_checker(tmp->line) == false)
 				return (error(INVALID_LINE));
 		}
-		else if (line_checker(prev_line->line, tmp->line, next_line->line) == false)
+		else if (line_checker(prev_line->line, tmp->line,
+				next_line->line) == false)
 			return (error(INVALID_LINE));
 		prev_line = tmp;
 		tmp = tmp->next;
