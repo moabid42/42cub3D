@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_long.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 14:30:48 by phperrot          #+#    #+#             */
-/*   Updated: 2022/11/06 17:14:35 by rdoukali         ###   ########.fr       */
+/*   Created: 2022/11/06 19:19:17 by moabid            #+#    #+#             */
+/*   Updated: 2022/11/06 19:23:10 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,20 @@ static int	ft_size(unsigned long n, int negative)
 	return (size);
 }
 
+static int	ft_negative(long n)
+{
+	if (n < 0)
+		return (1);
+	return (0);
+}
+
+static int	is_minus(long n)
+{
+	if (n < 0)
+		return (-n);
+	return (n);
+}
+
 char	*ft_itoa_long(long input)
 {
 	int				size;
@@ -54,8 +68,8 @@ char	*ft_itoa_long(long input)
 	int				negative;
 	unsigned long	n;
 
-	negative = (input < 0) ? 1 : 0;
-	n = (input < 0) ? -input : input;
+	negative = ft_negative(input);
+	n = is_minus(input);
 	if (!n)
 		return (ft_strdup("0"));
 	size = ft_size(n, negative);

@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/06 17:40:42 by rdoukali          #+#    #+#             */
-/*   Updated: 2022/11/06 17:41:51 by rdoukali         ###   ########.fr       */
+/*   Created: 2022/03/22 20:06:59 by moabid            #+#    #+#             */
+/*   Updated: 2022/11/06 19:02:36 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define MAX 2147483647
+# define MIN -2147483648
 
 typedef struct s_list
 {
@@ -26,7 +28,7 @@ typedef struct s_list
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
 int					ft_isspace(int c);
-void				*ft_memcpy(void *dst, void *src, size_t n);
+void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memchr(const void *s, int c, size_t n);
@@ -80,4 +82,5 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)\
 		(void*));
 char				*ft_strsub(char *str, int start, int len);
-#	endif
+
+#endif

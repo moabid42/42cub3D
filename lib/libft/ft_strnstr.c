@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 16:43:57 by phperrot          #+#    #+#             */
-/*   Updated: 2022/11/06 17:35:30 by rdoukali         ###   ########.fr       */
+/*   Created: 2022/03/24 14:35:33 by moabid            #+#    #+#             */
+/*   Updated: 2022/03/27 17:35:08 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char	*small;
-	char	*large;
-	size_t	i;
+	size_t	n_len;
+	size_t	h_len;
+	size_t	size;
 
-	small = (char *)needle;
-	large = (char *)haystack;
-	if (*small == '\0')
-		return (large);
-	i = ft_strlen(small);
-	while (*large && len-- >= i)
+	if (*needle == '\0')
+		return ((char *)haystack);
+	n_len = ft_strlen(needle);
+	h_len = ft_strlen(haystack);
+	if (h_len < n_len || len < n_len)
+		return (0);
+	size = len;
+	while (size-- >= n_len || !needle)
 	{
-		if (ft_memcmp(large, small, i) == 0)
-			return (large);
-		large++;
+		if (ft_memcmp(haystack, needle, n_len) == 0)
+			return ((char *)haystack);
+		haystack++;
 	}
-	return (NULL);
+	return (0);
 }

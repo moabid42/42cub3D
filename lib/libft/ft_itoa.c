@@ -3,82 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 14:30:48 by phperrot          #+#    #+#             */
-/*   Updated: 2022/11/06 17:13:40 by rdoukali         ###   ########.fr       */
+/*   Created: 2022/03/25 11:48:47 by moabid            #+#    #+#             */
+/*   Updated: 2022/03/25 19:38:13 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-static char	*ft_fill_char(int n, char *s, int i)
+static long int	ft_abs(long int nbr)
 {
-	int		tmp;
-
-	i--;
-	if (n < 0)
-	{
-		tmp = -n;
-		s[0] = '-';
-	}
-	else
-		tmp = n;
-	if (tmp >= 10)
-	{
-		ft_fill_char((tmp / 10), s, i);
-		s[i] = ((tmp % 10) + '0');
-	}
-	else
-		s[i] = (tmp + '0');
-	return (s);
+	if (nbr < 0)
+		return (-nbr);
+	return (nbr);
 }
 
-static int	ft_size(int n)
+static int	ft_len(long int nbr)
 {
-	int		size;
-	int		tmp;
+	int		len;
 
-	size = 0;
-	if (n < 0)
-	{
-		tmp = -n;
-		size++;
-	}
+	if (nbr <= 0)
+		len = 1;
 	else
-		tmp = n;
-	while (tmp > 0)
+		len = 0;
+	while (nbr != 0)
 	{
-		tmp = tmp / 10;
-		size++;
+		nbr = nbr / 10;
+		len++;
 	}
-	return (size);
+	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	int		size;
-	char	*number;
+	int		len;
+	int		sign;
+	char	*c;
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	if (!n)
-		return (ft_strdup("0"));
-	size = ft_size(n);
-	if (n == 0)
-	{
-		number = (char *)malloc(sizeof(*number) * 1);
-		if (!number)
-			return (NULL);
-		number[0] = '0';
-	}
+	if (n < 0)
+		sign = -1;
 	else
+		sign = 1;
+	len = ft_len(n);
+	c = (char *)malloc(sizeof(char) * len + 1);
+	if (c == NULL)
+		return (0);
+	c[len] = '\0';
+	len--;
+	while (len >= 0)
 	{
-		number = (char *)malloc(sizeof(*number) * size + 1);
-		if (!number)
-			return (NULL);
-		number = ft_fill_char(n, number, size);
+		c[len] = '0' + ft_abs(n % 10);
+		n = ft_abs(n / 10);
+		len--;
 	}
-	number[size] = '\0';
-	return (number);
+	if (sign == -1)
+		c[0] = '-';
+	return (c);
 }

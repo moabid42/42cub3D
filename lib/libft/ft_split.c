@@ -3,139 +3,85 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/07 09:52:18 by phperrot          #+#    #+#             */
-/*   Updated: 2022/11/06 17:29:01 by rdoukali         ###   ########.fr       */
+/*   Created: 2022/03/24 22:59:34 by moabid            #+#    #+#             */
+/*   Updated: 2022/06/17 19:50:50 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_nb_occur(const char *s, char c)
+static unsigned int	ft_get_nb_strs(char const *s, char c)
 {
-	int	i;
-	int	nb;
-	int	is_char;
-	int	is_string;
+	unsigned int	i;
+	unsigned int	nb_strs;
 
+	if (!s[0])
+		return (0);
 	i = 0;
-	nb = 0;
-	is_char = 1;
-	is_string = 0;
+	nb_strs = 0;
+	while (s[i] && s[i] == c)
+		i++;
 	while (s[i])
 	{
-		if (s[i] != c && !is_string)
+		if (s[i] == c)
 		{
-			is_string = 1;
-			is_char = 0;
-			nb++;
-		}
-		if (s[i] == c && !is_char)
-		{
-			is_string = 0;
-			is_char = 1;
-		}
-		i++;
-	}
-	return (nb);
-}
-
-static int	get_start(int i, const char *s, char c, int tab[])
-{
-	int	is_string;
-	int	start;
-
-	start = 0;
-	is_string = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] != '\0' && s[i] != c && !is_string)
-		{
-			is_string = 1;
-			start = i;
-			while (s[i] != c && s[i] != '\0')
+			nb_strs++;
+			while (s[i] && s[i] == c)
 				i++;
-			tab[0] = i - start;
-			break ;
+			continue ;
 		}
 		i++;
 	}
-	return (start);
+	if (s[i - 1] != c)
+		nb_strs++;
+	return (nb_strs);
 }
 
-static char	**ft_check(char const *s, char c)
+static void	ft_get_next_str(char **next_str, unsigned int *next_str_len, char c)
 {
-	int		check;
-	char	**tab_str;
+	unsigned int	i;
 
-	check = 0;
-	tab_str = (char **)malloc(sizeof(char *) * 1);
-	if (!tab_str)
-		return (NULL);
-	if (!s && !c)
-	{
-		tab_str[0] = ft_strdup("");
-		return (tab_str);
-	}
-	while (s[check++] == c)
-	{
-		if (s[check] == '\0')
-		{
-			tab_str[0] = NULL;
-			return (tab_str);
-		}
-	}
-	return (0);
-}
-
-static char	**ft_loop(char const *s, char c, int *tab, char **tab_str)
-{
-	int		i;
-	int		j;
-	int		k;
-
+	*next_str += *next_str_len;
+	*next_str_len = 0;
 	i = 0;
-	j = 0;
-	while (i < ft_nb_occur(s, c))
+	while (**next_str && **next_str == c)
+		(*next_str)++;
+	while ((*next_str)[i])
 	{
-		k = 0;
-		j = get_start(j, s, c, tab);
-		tab_str[i] = (char *)malloc(sizeof(char) * (tab[0] + 1));
-		if (!tab_str[i])
-			return (NULL);
-		while (k < tab[0])
-		{
-			tab_str[i][k] = s[j];
-			k++;
-			j++;
-		}
-		tab_str[i][k] = '\0';
+		if ((*next_str)[i] == c)
+			return ;
+		(*next_str_len)++;
 		i++;
 	}
-	tab_str[i] = 0;
-	return (tab_str);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		tab[1];
-	char	**tab_str;
+	char			**tab;
+	char			*next_str;
+	unsigned int	next_str_len;
+	unsigned int	nb_strs;
+	int				i;
 
+	i = -1;
 	if (!s)
 		return (NULL);
-	if (ft_check(s, c) != 0)
-		return (ft_check(s, c));
-	if (ft_strncmp(s, "", 1) == 0)
-	{
-		tab_str = (char **)malloc(sizeof(char *) * 1);
-		if (!tab_str)
-			return (NULL);
-		tab_str[0] = NULL;
-		return (tab_str);
-	}
-	tab_str = (char **)malloc(sizeof(char *) * (ft_nb_occur(s, c) + 1));
-	if (!tab_str)
+	nb_strs = ft_get_nb_strs(s, c);
+	tab = malloc(sizeof(char *) * (nb_strs + 1));
+	if (!tab)
 		return (NULL);
-	return (ft_loop(s, c, tab, tab_str));
+	next_str = (char *)s;
+	next_str_len = 0;
+	while (++i < (int)nb_strs)
+	{
+		ft_get_next_str(&next_str, &next_str_len, c);
+		tab[i] = (char *)malloc(sizeof(char) * (next_str_len + 1));
+		if (!tab[i])
+			return (NULL);
+		ft_strlcpy(tab[i], next_str, next_str_len + 1);
+	}
+	tab[i] = NULL;
+	return (tab);
 }

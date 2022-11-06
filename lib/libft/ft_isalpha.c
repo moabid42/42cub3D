@@ -3,19 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 14:16:43 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/24 16:56:16 by rdoukali         ###   ########.fr       */
+/*   Created: 2022/03/22 20:52:18 by moabid            #+#    #+#             */
+/*   Updated: 2022/03/27 17:08:25 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static int	ft_islowercase(int c)
+{
+	if ((c >= 'a') && (c <= 'z'))
+		return (1);
+	else
+		return (0);
+}
+
+static int	ft_isuppercase(int c)
+{
+	if ((c >= 'A') && (c <= 'Z'))
+		return (1);
+	else
+		return (0);
+}
+
 int	ft_isalpha(int c)
 {
-	if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z'))
-		return (0);
-	else
-		return (1);
+	return (ft_islowercase(c) || ft_isuppercase(c));
 }

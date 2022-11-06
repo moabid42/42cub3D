@@ -3,101 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 15:26:11 by phperrot          #+#    #+#             */
-/*   Updated: 2022/11/06 17:37:21 by rdoukali         ###   ########.fr       */
+/*   Created: 2022/03/24 22:37:31 by moabid            #+#    #+#             */
+/*   Updated: 2022/03/25 16:48:52 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_head_size(char *s1, char *set)
+static int	ft_getstart(const char *s1, const char *set)
 {
-	int	i;
-	int	j;
-	int	set_size;
+	size_t	len;
+	size_t	i;
 
+	len = ft_strlen(s1);
 	i = 0;
-	j = 0;
-	set_size = 0;
-	while (set[set_size] != '\0')
-		set_size++;
-	while (s1[i] != '\0')
+	while (i < len)
 	{
-		while (s1[i] != set[j] && set[j] != '\0')
-			j++;
-		if ((j == set_size) | (s1[i] == '\0'))
-			return (i);
-		else
-		{
-			i++;
-			j = 0;
-		}
+		if (ft_strchr(set, s1[i]) == 0)
+			break ;
+		i++;
 	}
-	return (0);
+	return (i);
 }
 
-int	ft_tail_size(char const *s1, char const *set)
+static int	ft_getend(const char *s1, const char *set)
 {
-	int	i;
-	int	j;
+	size_t	len;
+	size_t	i;
 
-	i = (int)ft_strlen(s1) - 1;
-	j = 0;
-	while (i >= 0)
+	len = ft_strlen(s1);
+	i = 0;
+	while (i < len)
 	{
-		while (s1[i] != set[j] && set[j] != '\0')
-		{
-			j++;
-		}
-		if (j == (int)(ft_strlen(set)) | i == -1)
-		{
-			return (ft_strlen(s1) - (i + 1));
-		}
-		else
-		{
-			i--;
-			j = 0;
-		}
+		if (ft_strchr(set, s1[len - i - 1]) == 0)
+			break ;
+		i++;
 	}
-	return (ft_strlen(s1));
-}
-
-char	*ft_empty_input(char const *s1, char const *set)
-{
-	if ((s1[0] == '\0') || (set[0] == '\0'))
-		return ((char *)s1);
-	else
-		return (NULL);
+	return (len - i);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		malloc_size;
-	int		i;
-	char	*output;
+	int		start;
+	int		end;
+	char	*newstr;
 
-	if (!s1 || !set)
+	if (s1 == NULL)
 		return (NULL);
-	if ((ft_empty_input(s1, set)) != NULL)
-		return (ft_empty_input(s1, set));
-	malloc_size = ft_strlen((char *)s1) - \
-				ft_head_size((char *)s1, (char *)set) - ft_tail_size(s1, set);
-	if (malloc_size > 0)
-	{
-		output = malloc(sizeof(char) * (malloc_size + 1));
-		if (!output)
-			return (0);
-	}
-	else
+	if (set == NULL)
+		return (ft_strdup(s1));
+	start = ft_getstart(s1, set);
+	end = ft_getend(s1, set);
+	if (start >= end)
 		return (ft_strdup(""));
-	i = 0;
-	while (i < malloc_size)
-	{
-		output[i] = s1[ft_head_size((char *)s1, (char *)set) + i];
-		i++;
-	}
-	output[i] = '\0';
-	return (output);
+	newstr = (char *)malloc(sizeof(char) * (end - start + 1));
+	if (newstr == NULL)
+		return (NULL);
+	ft_strlcpy(newstr, s1 + start, end - start + 1);
+	return (newstr);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 17:24:17 by phperrot          #+#    #+#             */
-/*   Updated: 2019/11/19 11:46:30 by phperrot         ###   ########.fr       */
+/*   Created: 2022/03/22 20:37:46 by moabid            #+#    #+#             */
+/*   Updated: 2022/04/11 00:31:07 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,17 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int		i;
-	char	*output;
+	char			*sub;
 
 	if (!s)
 		return (NULL);
-	i = 0;
-	if ((size_t)start > ft_strlen(s))
+	if ((unsigned int)ft_strlen(s) < start)
 		return (ft_strdup(""));
-	output = (char *)malloc(sizeof(*output) * len + 1);
-	if (output == NULL)
+	if ((unsigned int)ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
+	sub = malloc(len + 1);
+	if (!sub)
 		return (NULL);
-	while (len)
-	{
-		output[i] = s[start];
-		start++;
-		i++;
-		len--;
-	}
-	output[i] = '\0';
-	return (output);
+	ft_strlcpy(sub, s + start, len + 1);
+	return (sub);
 }

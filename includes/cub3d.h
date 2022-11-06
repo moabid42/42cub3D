@@ -6,7 +6,7 @@
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:26:08 by phperrot          #+#    #+#             */
-/*   Updated: 2022/11/06 18:04:50 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 18:07:36 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ struct				s_map
 	struct s_map			*next;
 };
 
-/// @brief ///data -> s_data
 struct					s_data
 {
 	int						line_index;
@@ -107,7 +106,7 @@ typedef struct s_ray
 	double					speed;
 	double					*zbuffer;
 }							t_ray;
-/// @brief ///cub3d -> s_cub3d
+
 struct						s_cub3d
 {
 	void					*mlx_ptr;

@@ -3,33 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 16:28:52 by phperrot          #+#    #+#             */
-/*   Updated: 2019/11/27 16:02:25 by phperrot         ###   ########.fr       */
+/*   Created: 2022/03/22 22:23:36 by moabid            #+#    #+#             */
+/*   Updated: 2022/04/06 23:20:11 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	unsigned int	count;
-	unsigned int	i;
+	size_t	src_len;
+	size_t	i;
 
-	if (!src)
-		return (0);
-	if (dstsize == 0)
-		return (ft_strlen(src));
-	count = 0;
-	while (src[count] != '\0')
-		count++;
+	src_len = 0;
 	i = 0;
-	while (src[i] != '\0' && i < (dstsize - 1))
+	if (!src || !dest)
+		return (0);
+	while (src[src_len] != '\0')
+		src_len++;
+	if (size == 0)
+		return (src_len);
+	while (src[i] != '\0' && i < (size - 1))
 	{
-		dst[i] = src[i];
+		dest[i] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
-	return (count);
+	dest[i] = '\0';
+	return (src_len);
 }

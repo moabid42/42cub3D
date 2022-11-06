@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 23:24:51 by moabid            #+#    #+#             */
-/*   Updated: 2022/10/24 15:39:53 by rdoukali         ###   ########.fr       */
+/*   Updated: 2022/11/06 18:10:02 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,5 @@ typedef enum e_error
 # define ROTATION_SPEED 0.2
 # define HEIGHT 1440
 # define WIDTH 2560
-# define set_flag(flag, bit) (flag |= bit)
-# define unset_flag(flag, bit) (flag &= (~(1 << bit)))
 
 #endif

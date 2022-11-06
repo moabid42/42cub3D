@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 15:00:20 by phperrot          #+#    #+#             */
-/*   Updated: 2022/11/06 18:04:50 by moabid           ###   ########.fr       */
+/*   Created: 2022/11/06 18:13:06 by moabid            #+#    #+#             */
+/*   Updated: 2022/11/06 18:13:09 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 int		key_hold(int key, struct s_cub3d *env)
 {
 	if (key == KEY_UP)
-		set_flag(env->move_flag, 1);
+		env->move_flag |= 1;
 	else if (key == KEY_DOWN)
-		set_flag(env->move_flag, 2);
+		env->move_flag |= 2;
 	else if (key == ROTATE_LEFT)
-		set_flag(env->move_flag, 4);
+		env->move_flag |= 4;
 	else if (key == ROTATE_RIGHT)
-		set_flag(env->move_flag, 8);
+		env->move_flag |= 8;
 	else if (key == KEY_LEFT)
-		set_flag(env->move_flag, 16);
+		env->move_flag |= 16;
 	else if (key == KEY_RIGHT)
-		set_flag(env->move_flag, 32);
+		env->move_flag |= 32;
 	else if (key == KEY_EXIT)
 		ft_exit(env);
 	return (SUCCESS);
@@ -35,17 +35,17 @@ int		key_hold(int key, struct s_cub3d *env)
 int		key_release(int key, struct s_cub3d *env)
 {
 	if (key == KEY_UP)
-		unset_flag(env->move_flag, 0);
+		env->move_flag &= (~(1 << 0));
 	else if (key == KEY_DOWN)
-		unset_flag(env->move_flag, 1);
+		env->move_flag &= (~(1 << 1));
 	else if (key == ROTATE_LEFT)
-		unset_flag(env->move_flag, 2);
+		env->move_flag &= (~(1 << 2));
 	else if (key == ROTATE_RIGHT)
-		unset_flag(env->move_flag, 3);
+		env->move_flag &= (~(1 << 3));
 	else if (key == KEY_LEFT)
-		unset_flag(env->move_flag, 4);
+		env->move_flag &= (~(1 << 4));
 	else if (key == KEY_RIGHT)
-		unset_flag(env->move_flag, 5);
+		env->move_flag &= (~(1 << 5));
 	return (SUCCESS);
 }
 
