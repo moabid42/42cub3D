@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strreplace.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 17:04:30 by phperrot          #+#    #+#             */
-/*   Updated: 2020/02/18 17:04:33 by phperrot         ###   ########.fr       */
+/*   Updated: 2022/11/06 17:35:41 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char				*ft_strreplace(char *str, char old, char new)
+char	*ft_strreplace(char *str, char old, char new)
 {
-	int				i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')

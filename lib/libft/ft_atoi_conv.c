@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoi_conv.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 13:14:14 by phperrot          #+#    #+#             */
-/*   Updated: 2019/12/21 14:18:52 by phperrot         ###   ########.fr       */
+/*   Updated: 2022/10/24 15:42:15 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long				ft_atoi_conv(const char *str, char conversion_type)
+long	ft_atoi_conv(const char *str, char conversion_type)
 {
 	int				i;
 	int				sign;
@@ -22,7 +22,7 @@ long				ft_atoi_conv(const char *str, char conversion_type)
 	i = 0;
 	nb = 0;
 	while ((char)str[i] == '\n' | (char)str[i] == '\r' | (char)str[i] == '\t'
-			| (char)str[i] == '\f' | (char)str[i] == '\v' | (char)str[i] == ' ')
+		| (char)str[i] == '\f' | (char)str[i] == '\v' | (char)str[i] == ' ')
 		i++;
 	if ((char)str[i] == '+' && (char)str[i + 1] != '-')
 		i++;

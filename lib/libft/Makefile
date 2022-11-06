@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: moabid <moabid@student.42.fr>              +#+  +:+       +#+         #
+#    By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 11:03:14 by phperrot          #+#    #+#              #
-#    Updated: 2022/10/16 22:00:49 by moabid           ###   ########.fr        #
+#    Updated: 2022/10/20 18:05:19 by rdoukali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,11 +97,11 @@ bonus: $(OBJ) $(BOBJ)
 
 clean:
 	@rm -f $(OBJ) $(BOBJ)
-	@echo "OBJ deleted"
+	@echo "OBJ deleted      🗑"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(NAME) deleted"
+	@echo "$(NAME) deleted  🗑"
 
 re: fclean all 
 

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoa_long.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 14:30:48 by phperrot          #+#    #+#             */
-/*   Updated: 2019/12/21 14:24:32 by phperrot         ###   ########.fr       */
+/*   Updated: 2022/11/06 17:14:35 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char			*ft_fill_char(unsigned long n, char *s, int i, int negative)
+static char	*ft_fill_char(unsigned long n, char *s, int i, int negative)
 {
 	unsigned long	tmp;
 
@@ -30,7 +30,7 @@ static char			*ft_fill_char(unsigned long n, char *s, int i, int negative)
 	return (s);
 }
 
-static int			ft_size(unsigned long n, int negative)
+static int	ft_size(unsigned long n, int negative)
 {
 	int				size;
 	unsigned long	tmp;
@@ -47,7 +47,7 @@ static int			ft_size(unsigned long n, int negative)
 	return (size);
 }
 
-char				*ft_itoa_long(long input)
+char	*ft_itoa_long(long input)
 {
 	int				size;
 	char			*number;
@@ -61,13 +61,15 @@ char				*ft_itoa_long(long input)
 	size = ft_size(n, negative);
 	if (n == 0)
 	{
-		if (!(number = (char *)malloc(sizeof(*number) * 1)))
+		number = (char *)malloc(sizeof(*number) * 1);
+		if (!number)
 			return (NULL);
 		number[0] = '0';
 	}
 	else
 	{
-		if (!(number = (char *)malloc(sizeof(*number) * size + 1)))
+		number = (char *)malloc(sizeof(*number) * size + 1);
+		if (!number)
 			return (NULL);
 		number = ft_fill_char(n, number, size, negative);
 	}

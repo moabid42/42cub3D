@@ -3,30 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:26:08 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 18:21:51 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/24 15:37:53 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef CUB3D_H
-#	define CUB3D_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
-
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <math.h>
-#include <stdbool.h>
-
-#include "macros.h"
-#include "../lib/libft/libft.h"
-#include "../lib/mlx/mlx.h"
-#include "../gnl/get_next_line.h"
-
-
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <math.h>
+# include <stdbool.h>
+# include "macros.h"
+# include "../lib/libft/libft.h"
+# include "../lib/mlx/mlx.h"
+# include "../gnl/get_next_line.h"
 
 struct				s_rgb
 {
@@ -41,22 +37,23 @@ struct				s_map
 	struct s_map			*next;
 };
 
-struct						data
+/// @brief ///data -> s_data
+struct					s_data
 {
 	int						line_index;
 	int						screen_w;
 	int						screen_h;
 	int						map_flag;
+	struct s_rgb			floor;
+	struct s_rgb			ceil;
+	struct s_map			*map;
 	char					*no;
 	char					*so;
 	char					*we;
 	char					*ea;
-	struct s_rgb 					floor;
-	struct s_rgb 					ceil;
-	struct s_map 					*map;
 };
 
-typedef	struct				s_tex
+typedef struct s_tex
 {
 	void					*tex_ptr;
 	int						*tex_data;
@@ -78,7 +75,7 @@ struct						s_img
 	int						height;
 };
 
-typedef struct				s_ray
+typedef struct s_ray
 {
 	double					planex;
 	double					planey;
@@ -110,8 +107,8 @@ typedef struct				s_ray
 	double					speed;
 	double					*zbuffer;
 }							t_ray;
-
-struct						cub3d
+/// @brief ///cub3d -> s_cub3d
+struct						s_cub3d
 {
 	void					*mlx_ptr;
 	void					*win_ptr;
@@ -127,7 +124,7 @@ struct						cub3d
 	int						error;
 	long long				move_flag;
 	t_ray					ray;
-	struct s_img 			*img;
+	struct s_img			*img;
 	t_tex					*tex_s;
 	t_tex					*tex_n;
 	t_tex					*tex_w;
@@ -136,81 +133,60 @@ struct						cub3d
 };
 
 int							fetch_arguments(struct data *arg, char *buff);
-
 int							check_path(struct data *arg, char *buff);
 int							check_path1(char *orientation, char \
 		*buff, int i, struct data *arg);
-
-t_tex						*ft_new_tex(struct cub3d *env, char *file, char *type);
+t_tex						*ft_new_tex(struct cub3d *env, char *file, \
+		char *type);
 struct cub3d				env_create(struct data arg);
-
-int							from_rgb_to_hex(struct s_rgb  color);
-void						player_create(struct cub3d *env, struct data a, int y, int x);
-
+int							from_rgb_to_hex(struct s_rgb color);
+void						player_create(struct cub3d *env, struct data a, \
+		int y, int x);
 int							ft_exit(struct cub3d *env);
 bool						cub3d_run(struct cub3d env);
-
 void						movements_create(struct cub3d *env);
-
 int							frames_display(struct cub3d *env, int x);
-int							ft_put_pixel(struct s_img  *img, unsigned int\
-		color, int p_x, int p_y);
-
-
+int							ft_put_pixel(struct s_img *img, \
+		unsigned int color, int p_x, int p_y);
 void						ft_init_ray(struct cub3d *env, int x);
 void						ft_direction_ray(struct cub3d *env);
 char						ft_hit_ray(struct cub3d *env, char wall_tex);
 void						ft_size_ray(struct cub3d *env);
 void						ft_wall_tex(struct cub3d *env, char tex);
-
-
 int							count_char(char *str, char c);
-struct s_map 						*ft_lstlast_map(struct s_map *lst);
-struct s_map 						*ft_lstnew_map(void *content);
-void						ft_lstadd_back_map(struct s_map **alst, struct s_map *new);
+struct s_map				*ft_lstlast_map(struct s_map *lst);
+struct s_map				*ft_lstnew_map(void *content);
+void						ft_lstadd_back_map(struct s_map **alst, \
+		struct s_map *new);
 int							ft_lstsize_map(struct s_map *lst);
 char						**map_list_create(struct s_map *lst);
-struct s_img 						*ft_new_image(struct cub3d *env, int width, int height);
+struct s_img				*ft_new_image(struct cub3d *env, \
+		int width, int height);
 void						pixel_tex(t_tex *tex, struct cub3d *env);
 char						*pix_color(struct cub3d *env);
-
-
 void						ft_free_tex(struct cub3d *env, t_tex *tex);
-void						ft_free_img(struct cub3d *env, struct s_img  *img);
-
+void						ft_free_img(struct cub3d *env, struct s_img *img);
 int							texture_init(struct cub3d *env);
-
 int							ft_error(int error, struct cub3d *env);
 int							ft_error_arg(int error);
 int							ft_error_tex_inputs(int error, char *orientation);
-
 bool						cub3d_arg_check(int ac, char **av);
-
-void    					new_line_remove(char *line);
-
+void						new_line_remove(char *line);
 bool						line_isnotempty(struct data *arg, char *line);
-
-int	error(int error);
-
+int							error(int error);
 bool						cub3d_check_map(struct s_map *map, int i);
-
 bool						cub3d_create(struct data *arg, char *file);
-
 
 ///////////////////////////////
 //          events.c         //
 ///////////////////////////////
 
-void	movements_create(struct cub3d *env);
-
-void	linear_movement(struct cub3d *env);
-void	move_up(struct cub3d *env);
-void    move_down(struct cub3d *env);
-
-void	translation(struct cub3d *env);
-void    right_translation(struct cub3d *env);
-void    left_translation(struct cub3d *env);
-
-void	rotation(struct cub3d *env, int advance);
-
+void						movements_create(struct cub3d *env);
+void						linear_movement(struct cub3d *env);
+void						move_up(struct cub3d *env);
+void						move_down(struct cub3d *env);
+void						translation(struct cub3d *env);
+void						right_translation(struct cub3d *env);
+void						left_translation(struct cub3d *env);
+void						rotation(struct cub3d *env, int advance);
 #	endif

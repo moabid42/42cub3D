@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 17:43:58 by phperrot          #+#    #+#             */
-/*   Updated: 2019/11/14 15:41:16 by phperrot         ###   ########.fr       */
+/*   Updated: 2022/11/06 17:20:59 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	if (!dst && !src)
 		return (NULL);
 	i = 0;
-	point_dst = (unsigned char*)dst;
-	point_src = (unsigned char*)src;
+	point_dst = (unsigned char *)dst;
+	point_src = (unsigned char *)src;
 	while (i < n)
 	{
 		point_dst[i] = point_src[i];

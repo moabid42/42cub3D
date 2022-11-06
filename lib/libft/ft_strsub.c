@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 17:04:42 by phperrot          #+#    #+#             */
-/*   Updated: 2020/02/18 17:04:51 by phperrot         ###   ########.fr       */
+/*   Updated: 2022/11/06 17:36:05 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char					*ft_strsub(char *str, int start, int len)
+char	*ft_strsub(char *str, int start, int len)
 {
 	int					i;
 	char				*output;
@@ -20,7 +20,8 @@ char					*ft_strsub(char *str, int start, int len)
 	i = 0;
 	if (!str)
 		return (NULL);
-	if (!(output = malloc(sizeof(char) * (len + 1))))
+	output = malloc(sizeof(char) * (len + 1));
+	if (!output)
 		return (NULL);
 	while (i < len && (str[start + i] != '\n'))
 	{

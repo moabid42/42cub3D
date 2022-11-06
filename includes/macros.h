@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 23:24:51 by moabid            #+#    #+#             */
-/*   Updated: 2022/10/18 18:47:17 by moabid           ###   ########.fr       */
+/*   Updated: 2022/10/24 15:39:53 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "cub3d.h"
 
-typedef	enum				e_error
+typedef enum e_error
 {
 	ERROR,
 	INVALID_LINE,
@@ -46,27 +46,24 @@ typedef	enum				e_error
 	SUCCESS
 }							t_error;
 
-#	define INVISI_CHAR "\t\v\r\f "
-#	define KEY_UP 13
-#	define KEY_RIGHT 2
-#	define KEY_LEFT 0
-#	define KEY_DOWN 1
-#	define ROTATE_LEFT 123
-#	define ROTATE_RIGHT 124
-#	define KEYPRESS 2
-#	define KEYRELEASE 3
-#	define KEYPRESSMASK 1
-#	define KEYRELEASEMASK 10
-#	define KEY_EXIT 53
-#	define STRUCTURENOTIFYMASK 10001
-
-#	define SPEED	0.2
-#	define ROTATION_SPEED 0.2
-
-#	define HEIGHT 1440
-#	define WIDTH 2560
-
-#	define set_flag(flag, bit) (flag |= bit)
-#	define unset_flag(flag, bit) (flag &= (~(1 << bit)))
+# define INVISI_CHAR "\t\v\r\f "
+# define KEY_UP 13
+# define KEY_RIGHT 2
+# define KEY_LEFT 0
+# define KEY_DOWN 1
+# define ROTATE_LEFT 123
+# define ROTATE_RIGHT 124
+# define KEYPRESS 2
+# define KEYRELEASE 3
+# define KEYPRESSMASK 1
+# define KEYRELEASEMASK 10
+# define KEY_EXIT 53
+# define STRUCTURENOTIFYMASK 10001
+# define SPEED	0.2
+# define ROTATION_SPEED 0.2
+# define HEIGHT 1440
+# define WIDTH 2560
+# define set_flag(flag, bit) (flag |= bit)
+# define unset_flag(flag, bit) (flag &= (~(1 << bit)))
 
 #endif

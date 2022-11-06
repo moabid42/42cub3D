@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 14:30:48 by phperrot          #+#    #+#             */
-/*   Updated: 2019/11/18 17:14:21 by phperrot         ###   ########.fr       */
+/*   Updated: 2022/11/06 17:13:40 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,28 +55,27 @@ static int	ft_size(int n)
 	return (size);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		size;
 	char	*number;
 
 	if (n == -2147483648)
-	{
-		number = ft_strdup("-2147483648");
-		return (number);
-	}
+		return (ft_strdup("-2147483648"));
 	if (!n)
 		return (ft_strdup("0"));
 	size = ft_size(n);
 	if (n == 0)
 	{
-		if (!(number = (char *)malloc(sizeof(*number) * 1)))
+		number = (char *)malloc(sizeof(*number) * 1);
+		if (!number)
 			return (NULL);
 		number[0] = '0';
 	}
 	else
 	{
-		if (!(number = (char *)malloc(sizeof(*number) * size + 1)))
+		number = (char *)malloc(sizeof(*number) * size + 1);
+		if (!number)
 			return (NULL);
 		number = ft_fill_char(n, number, size);
 	}

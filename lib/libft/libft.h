@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/08 10:24:23 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/16 22:00:40 by moabid           ###   ########.fr       */
+/*   Created: 2022/11/06 17:40:42 by rdoukali          #+#    #+#             */
+/*   Updated: 2022/11/06 17:41:51 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef __LIBFT_H
-#	define __LIBFT_H
-#	include <string.h>
-#	include <stdlib.h>
-#	include <unistd.h>
+#ifndef LIBFT_H
+# define LIBFT_H
 
-typedef struct		s_list
+# include <string.h>
+# include <stdlib.h>
+# include <unistd.h>
+
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
@@ -43,7 +44,7 @@ char				*ft_strrchr(const char *s, int c);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
-char				*ft_strnstr(const char *haystack, const char *needle,\
+char				*ft_strnstr(const char *haystack, const char *needle, \
 					size_t len);
 int					ft_atoi(const char *str);
 long				ft_atoi_conv(const char *str, char conversion_type);

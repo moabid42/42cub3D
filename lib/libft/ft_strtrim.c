@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:26:11 by phperrot          #+#    #+#             */
-/*   Updated: 2019/12/21 14:25:53 by phperrot         ###   ########.fr       */
+/*   Updated: 2022/11/06 17:37:21 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_head_size(char *s1, char *set)
+int	ft_head_size(char *s1, char *set)
 {
-	int i;
-	int j;
-	int set_size;
+	int	i;
+	int	j;
+	int	set_size;
 
 	i = 0;
 	j = 0;
@@ -38,10 +38,10 @@ int		ft_head_size(char *s1, char *set)
 	return (0);
 }
 
-int		ft_tail_size(char const *s1, char const *set)
+int	ft_tail_size(char const *s1, char const *set)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = (int)ft_strlen(s1) - 1;
 	j = 0;
@@ -82,11 +82,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	if ((ft_empty_input(s1, set)) != NULL)
 		return (ft_empty_input(s1, set));
-	malloc_size = ft_strlen((char*)s1) - \
-				ft_head_size((char*)s1, (char*)set) - ft_tail_size(s1, set);
+	malloc_size = ft_strlen((char *)s1) - \
+				ft_head_size((char *)s1, (char *)set) - ft_tail_size(s1, set);
 	if (malloc_size > 0)
 	{
-		if (!(output = malloc(sizeof(char) * (malloc_size + 1))))
+		output = malloc(sizeof(char) * (malloc_size + 1));
+		if (!output)
 			return (0);
 	}
 	else
@@ -94,7 +95,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	i = 0;
 	while (i < malloc_size)
 	{
-		output[i] = s1[ft_head_size((char*)s1, (char*)set) + i];
+		output[i] = s1[ft_head_size((char *)s1, (char *)set) + i];
 		i++;
 	}
 	output[i] = '\0';

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 09:52:18 by phperrot          #+#    #+#             */
-/*   Updated: 2019/11/18 17:13:43 by phperrot         ###   ########.fr       */
+/*   Updated: 2022/11/06 17:29:01 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static int	ft_nb_occur(const char *s, char c)
 {
-	int i;
-	int nb;
-	int is_char;
-	int is_string;
+	int	i;
+	int	nb;
+	int	is_char;
+	int	is_string;
 
 	i = 0;
 	nb = 0;
@@ -43,8 +43,8 @@ static int	ft_nb_occur(const char *s, char c)
 
 static int	get_start(int i, const char *s, char c, int tab[])
 {
-	int is_string;
-	int start;
+	int	is_string;
+	int	start;
 
 	start = 0;
 	is_string = 0;
@@ -70,7 +70,8 @@ static char	**ft_check(char const *s, char c)
 	char	**tab_str;
 
 	check = 0;
-	if (!(tab_str = (char**)malloc(sizeof(char *) * 1)))
+	tab_str = (char **)malloc(sizeof(char *) * 1);
+	if (!tab_str)
 		return (NULL);
 	if (!s && !c)
 	{
@@ -100,7 +101,8 @@ static char	**ft_loop(char const *s, char c, int *tab, char **tab_str)
 	{
 		k = 0;
 		j = get_start(j, s, c, tab);
-		if (!(tab_str[i] = (char*)malloc(sizeof(char) * (tab[0] + 1))))
+		tab_str[i] = (char *)malloc(sizeof(char) * (tab[0] + 1));
+		if (!tab_str[i])
 			return (NULL);
 		while (k < tab[0])
 		{
@@ -115,7 +117,7 @@ static char	**ft_loop(char const *s, char c, int *tab, char **tab_str)
 	return (tab_str);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	int		tab[1];
 	char	**tab_str;
@@ -126,12 +128,14 @@ char		**ft_split(char const *s, char c)
 		return (ft_check(s, c));
 	if (ft_strncmp(s, "", 1) == 0)
 	{
-		if (!(tab_str = (char**)malloc(sizeof(char *) * 1)))
+		tab_str = (char **)malloc(sizeof(char *) * 1);
+		if (!tab_str)
 			return (NULL);
 		tab_str[0] = NULL;
 		return (tab_str);
 	}
-	if (!(tab_str = (char**)malloc(sizeof(char *) * (ft_nb_occur(s, c) + 1))))
+	tab_str = (char **)malloc(sizeof(char *) * (ft_nb_occur(s, c) + 1));
+	if (!tab_str)
 		return (NULL);
 	return (ft_loop(s, c, tab, tab_str));
 }
