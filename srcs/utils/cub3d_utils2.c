@@ -3,29 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:26:33 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 16:37:04 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 23:17:01 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-struct s_map 		*ft_lstnew_map(void *content)
+struct s_map	*ft_lstnew_map(void *content)
 {
-	struct s_map 	*elem;
+	struct s_map	*elem;
 
-	if (!(elem = malloc(sizeof(t_list))))
+	elem = malloc(sizeof(t_list));
+	if (!elem)
 		return (NULL);
 	elem->line = content;
 	elem->next = NULL;
 	return (elem);
 }
 
-void		ft_lstadd_back_map(struct s_map **alst, struct s_map *new)
+void	ft_lstadd_back_map(struct s_map **alst, struct s_map *new)
 {
-	struct s_map 	*tmp;
+	struct s_map	*tmp;
 
 	tmp = *alst;
 	if (*alst == NULL)
@@ -34,10 +35,10 @@ void		ft_lstadd_back_map(struct s_map **alst, struct s_map *new)
 		(ft_lstlast_map(*alst))->next = new;
 }
 
-void		ft_lstclear_map(struct s_map **lst)
+void	ft_lstclear_map(struct s_map **lst)
 {
-	struct s_map 	*tmp;
-	struct s_map 	*next;
+	struct s_map	*tmp;
+	struct s_map	*next;
 
 	if (!lst)
 		return ;
@@ -51,10 +52,10 @@ void		ft_lstclear_map(struct s_map **lst)
 	*lst = NULL;
 }
 
-int			ft_lstsize_map(struct s_map *lst)
+int	ft_lstsize_map(struct s_map *lst)
 {
-	struct s_map 	*tmp;
-	int		i;
+	struct s_map	*tmp;
+	int				i;
 
 	i = 0;
 	if (!lst)
@@ -68,20 +69,22 @@ int			ft_lstsize_map(struct s_map *lst)
 	return (i);
 }
 
-char		**map_list_create(struct s_map *lst)
+char	**map_list_create(struct s_map *lst)
 {
-	struct s_map 	*tmp;
-	int		i;
-	int		j;
-	char	**tab;
+	struct s_map	*tmp;
+	int				i;
+	int				j;
+	char			**tab;
 
 	tmp = lst;
-	if (!(tab = malloc(sizeof(char*) * (ft_lstsize_map(lst) + 1))))
+	tab = malloc(sizeof(char *) * (ft_lstsize_map(lst) + 1));
+	if (!tab)
 		return (NULL);
 	i = 0;
 	while (i < ft_lstsize_map(lst))
 	{
-		if (!(tab[i] = malloc(sizeof(char) * (ft_strlen(tmp->line) + 1))))
+		tab[i] = malloc(sizeof(char) * (ft_strlen(tmp->line) + 1));
+		if (!tab[i])
 			return (NULL);
 		j = 0;
 		while (tmp->line[j] != '\0')

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   events_start.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:13:06 by moabid            #+#    #+#             */
-/*   Updated: 2022/11/06 18:13:09 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 20:00:23 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		key_hold(int key, struct s_cub3d *env)
+int	key_hold(int key, struct s_cub3d *env)
 {
 	if (key == KEY_UP)
 		env->move_flag |= 1;
@@ -31,8 +31,7 @@ int		key_hold(int key, struct s_cub3d *env)
 	return (SUCCESS);
 }
 
-
-int		key_release(int key, struct s_cub3d *env)
+int	key_release(int key, struct s_cub3d *env)
 {
 	if (key == KEY_UP)
 		env->move_flag &= (~(1 << 0));
@@ -49,10 +48,11 @@ int		key_release(int key, struct s_cub3d *env)
 	return (SUCCESS);
 }
 
-int		frames_run(struct s_cub3d *env)
+int	frames_run(struct s_cub3d *env)
 {
 	ft_free_img(env, env->img);
-	if ((env->img = ft_new_image(env, env->width, env->height)) == NULL)
+	env->img = ft_new_image(env, env->width, env->height);
+	if (env->img == NULL)
 	{
 		env->error = IMG_ERROR;
 		ft_error(env->error, env);
@@ -65,16 +65,18 @@ int		frames_run(struct s_cub3d *env)
 	return (SUCCESS);
 }
 
-bool		cub3d_run(struct s_cub3d env)
+bool	cub3d_run(struct s_cub3d env)
 {
 	while (env.width % 4)
 		env.width++;
-    if (!(env.win_ptr = mlx_new_window(env.mlx_ptr, 1, 1, "Cub3D")))
-        return (false);
+	env.win_ptr = mlx_new_window(env.mlx_ptr, 1, 1, "Cub3D");
+	if (!env.win_ptr)
+		return (false);
 	else
 	{
-		if (!(env.win_ptr = mlx_new_window(env.mlx_ptr, env.width, \
-		env.height, "Cub3D")))
+		env.win_ptr = mlx_new_window(env.mlx_ptr, env.width, \
+			env.height, "Cub3D");
+		if (!env.win_ptr)
 			return (false);
 	}
 	mlx_hook(env.win_ptr, 17, STRUCTURENOTIFYMASK, ft_exit, &env);

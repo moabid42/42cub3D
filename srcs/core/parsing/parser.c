@@ -3,26 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:13:31 by moabid            #+#    #+#             */
-/*   Updated: 2022/11/06 18:13:33 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 20:16:10 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int			get_map(struct s_data *arg, char *line)
+int	get_map(struct s_data *arg, char *line)
 {
-	struct s_map 	*tmp;
+	struct s_map	*tmp;
 
-	if (!(tmp = ft_lstnew_map(ft_strdup(line))))
+	tmp = ft_lstnew_map(ft_strdup(line));
+	if (!tmp)
 		return (ERROR);
 	ft_lstadd_back_map(&(arg->map), tmp);
 	return (SUCCESS);
 }
 
-int			check_floor_ceil_b(struct s_data *arg, char *line, int i)
+int	check_floor_ceil_b(struct s_data *arg, char *line, int i)
 {
 	while (ft_isdigit(line[i]))
 		i++;
@@ -39,9 +40,9 @@ int			check_floor_ceil_b(struct s_data *arg, char *line, int i)
 	return (SUCCESS);
 }
 
-int			check_floor_ceil(struct s_data *arg, char *line)
+int	check_floor_ceil(struct s_data *arg, char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (!ft_isdigit(line[i]) && line[i] != '-' && line[i])
@@ -69,7 +70,7 @@ int			check_floor_ceil(struct s_data *arg, char *line)
 	return (SUCCESS);
 }
 
-int			fetch_arguments(struct s_data *arg, char *line)
+int	fetch_arguments(struct s_data *arg, char *line)
 {
 	if (line[0] == '\n' || line[0] == '\0')
 		return (SUCCESS);

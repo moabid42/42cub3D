@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 09:15:57 by phperrot          #+#    #+#             */
-/*   Updated: 2022/11/06 18:04:50 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 23:24:13 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	launch_env(struct s_data arg, int ac)
 {
-	struct s_cub3d 	env;
+	struct s_cub3d	env;
 
 	if (cub3d_check_map(arg.map, 0) == false)
 		return (false);
@@ -24,7 +24,7 @@ bool	launch_env(struct s_data arg, int ac)
 	return (true);
 }
 
-int			main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	struct s_data	arg;
 

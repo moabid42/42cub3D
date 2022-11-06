@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:05:58 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 18:25:09 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 23:14:42 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int			count_char(char *str, char c)
+int	count_char(char *str, char c)
 {
-	int		i;
-	int		count;
+	int	i;
+	int	count;
 
 	i = 0;
 	count = 0;
@@ -28,7 +28,7 @@ int			count_char(char *str, char c)
 	return (count);
 }
 
-char		*withdraw_char(char *str, char c)
+char	*withdraw_char(char *str, char c)
 {
 	int		i;
 	int		j;
@@ -38,7 +38,8 @@ char		*withdraw_char(char *str, char c)
 
 	old_len = ft_strlen(str);
 	new_len = old_len - count_char(str, c);
-	if (!(new_str = malloc(sizeof(char) * (new_len + 1))))
+	new_str = malloc(sizeof(char) * (new_len + 1));
+	if (!new_str)
 		return (NULL);
 	i = 0;
 	j = 0;
@@ -55,9 +56,9 @@ char		*withdraw_char(char *str, char c)
 	return (new_str);
 }
 
-struct s_map 		*ft_lstlast_map(struct s_map *lst)
+struct s_map	*ft_lstlast_map(struct s_map *lst)
 {
-	struct s_map 	*tmp;
+	struct s_map	*tmp;
 
 	if (!lst)
 		return (NULL);

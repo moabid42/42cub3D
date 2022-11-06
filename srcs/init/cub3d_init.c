@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:56:05 by moabid            #+#    #+#             */
-/*   Updated: 2022/11/06 18:04:16 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 23:04:54 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool	cub3d_create(struct s_data *arg, char *file)
 	int			fd1;
 	int			ret;
 	char		*line;
-	
+
 	ret = 0;
 	fd1 = open(file, O_RDWR);
 	line = get_next_line(fd1);

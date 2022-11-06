@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:13:42 by moabid            #+#    #+#             */
-/*   Updated: 2022/11/06 18:13:44 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 20:17:56 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int			ft_put_pixel(struct s_img  *img, unsigned int color, int p_x, int p_y)
+int	ft_put_pixel(struct s_img *img, unsigned int color, int p_x, int p_y)
 {
 	if (p_y >= img->height || p_x >= img->width || p_x < 0
-	|| p_y < 0 || ((p_y * img->width + p_x) >= (img->width * img->height - 1)))
+		|| p_y < 0
+		|| ((p_y * img->width + p_x) >= (img->width * img->height - 1)))
 		return (PIXEL_ERROR);
 	img->img_data[p_y * img->width + p_x] = color;
 	return (SUCCESS);
@@ -23,7 +24,7 @@ int			ft_put_pixel(struct s_img  *img, unsigned int color, int p_x, int p_y)
 
 char	*draw_pixels(struct s_cub3d *env, int x, int y, int height)
 {
-	char *tex_path;
+	char	*tex_path;
 
 	while (y < env->ray.wstart)
 		ft_put_pixel(env->img, env->ceil, x, y++);
@@ -39,9 +40,10 @@ char	*draw_pixels(struct s_cub3d *env, int x, int y, int height)
 		ft_put_pixel(env->img, env->floor, x, y++);
 	return (tex_path);
 }
-char		*display(struct s_cub3d *env, int x, char tex, int y)
+
+char	*display(struct s_cub3d *env, int x, char tex, int y)
 {
-	int		height;
+	int	height;
 
 	if (tex == 'E')
 		height = env->tex_e->height;
@@ -54,9 +56,9 @@ char		*display(struct s_cub3d *env, int x, char tex, int y)
 	return (draw_pixels(env, x, y, height));
 }
 
-int			frames_display(struct s_cub3d *env, int x)
+int	frames_display(struct s_cub3d *env, int x)
 {
-	char tex;
+	char	tex;
 
 	while (x < env->width)
 	{

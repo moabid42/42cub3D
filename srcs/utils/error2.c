@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   error2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:58:00 by phperrot          #+#    #+#             */
-/*   Updated: 2022/10/18 13:21:58 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 23:22:26 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		ft_error_tex_inputs(int error, char *orientation)
+int	ft_error_tex_inputs(int error, char *orientation)
 {
 	error = ft_strlen(orientation);
 	free(orientation);
@@ -30,7 +30,7 @@ void	ft_error_arg2(int error)
 		ft_putstr("Error\nUnknown arg");
 }
 
-int		ft_error_arg(int error)
+int	ft_error_arg(int error)
 {
 	if (error == FILE_EXT_ERROR)
 		ft_putstr("Error\nFirst argument is not a .cub file");

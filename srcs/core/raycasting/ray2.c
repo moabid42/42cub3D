@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ray2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:13:54 by moabid            #+#    #+#             */
-/*   Updated: 2022/11/06 18:13:55 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 20:23:06 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int			ft_get_tex_height(struct s_cub3d *env, char tex)
+int	ft_get_tex_height(struct s_cub3d *env, char tex)
 {
-	int		height;
+	int	height;
 
 	height = 64;
 	if (tex == 'E')
@@ -28,9 +28,9 @@ int			ft_get_tex_height(struct s_cub3d *env, char tex)
 	return (height);
 }
 
-int			ft_get_tex_width(struct s_cub3d *env, char tex)
+int	ft_get_tex_width(struct s_cub3d *env, char tex)
 {
-	int		width;
+	int	width;
 
 	width = 64;
 	if (tex == 'E')
@@ -44,7 +44,7 @@ int			ft_get_tex_width(struct s_cub3d *env, char tex)
 	return (width);
 }
 
-void		ft_wall_tex(struct s_cub3d *env, char tex)
+void	ft_wall_tex(struct s_cub3d *env, char tex)
 {
 	double	wallx;
 	int		height;
@@ -63,6 +63,6 @@ void		ft_wall_tex(struct s_cub3d *env, char tex)
 	else if (env->ray.wall == 1)
 		env->ray.tex_x = width + env->ray.tex_x - 1;
 	env->ray.step_tex = 1 * width / env->ray.rh;
-	env->ray.tex_pos = (env->ray.wstart - env->height / 2\
-	+ env->ray.rh / 2) * env->ray.step_tex - 1;
+	env->ray.tex_pos = (env->ray.wstart - env->height / 2
+			+ env->ray.rh / 2) * env->ray.step_tex - 1;
 }

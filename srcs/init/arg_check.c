@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   arg_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 14:08:46 by moabid            #+#    #+#             */
-/*   Updated: 2022/11/06 18:04:16 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 23:04:36 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 bool	line_isnotempty(struct s_data *arg, char *line)
 {
@@ -21,7 +20,7 @@ bool	line_isnotempty(struct s_data *arg, char *line)
 	return (true);
 }
 
-bool			cub3d_arg_check(int ac, char **av)
+bool	cub3d_arg_check(int ac, char **av)
 {
 	if (ac > 2 || ac < 2)
 		return (error(NB_ARG_ERROR));

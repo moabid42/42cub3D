@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:13:47 by moabid            #+#    #+#             */
-/*   Updated: 2022/11/06 18:13:49 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 20:20:33 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int			check_map_same_size(struct s_map *map)
+int	check_map_same_size(struct s_map *map)
 {
-	struct s_map 	*tmp;
-	int		size;
+	int				size;
+	struct s_map	*tmp;
 
 	tmp = map;
 	size = (int)ft_strlen(tmp->line);
@@ -28,9 +28,9 @@ int			check_map_same_size(struct s_map *map)
 	return (SUCCESS);
 }
 
-int			check_non_square_map(struct s_map *tmp, struct s_map *previous, int i, int j)
+int	check_nsm(struct s_map *tmp, struct s_map *previous, int i, int j)
 {
-	struct s_map *next;
+	struct s_map	*next;
 
 	tmp = tmp->next;
 	next = tmp->next;
@@ -39,11 +39,11 @@ int			check_non_square_map(struct s_map *tmp, struct s_map *previous, int i, int
 		i = 0;
 		while (tmp->line[i])
 		{
-			if (tmp->line[i] != '1' && tmp->line[i] != ' ' && i >=\
+			if (tmp->line[i] != '1' && tmp->line[i] != ' ' && i >= \
 			(int)ft_strlen(previous->line))
 				return (MAP_ERROR_NOT_CLOSED);
 			if (next)
-				if (tmp->line[i] != '1' && tmp->line[i] != ' ' && i >=\
+				if (tmp->line[i] != '1' && tmp->line[i] != ' ' && i >= \
 				(int)ft_strlen(next->line))
 					return (MAP_ERROR_NOT_CLOSED);
 			i++;
@@ -56,13 +56,13 @@ int			check_non_square_map(struct s_map *tmp, struct s_map *previous, int i, int
 	return (SUCCESS);
 }
 
-int			check_map_closed(struct s_map *map)
+int	check_map_closed(struct s_map *map)
 {
-	struct s_map 	*tmp;
-	int		i;
+	int				i;
+	struct s_map	*tmp;
 
 	tmp = map;
-	if (check_non_square_map(tmp, tmp, 0, 1) != SUCCESS)
+	if (check_nsm(tmp, tmp, 0, 1) != SUCCESS)
 		return (MAP_ERROR_NOT_CLOSED);
 	i = 0;
 	while (tmp->line[i])
@@ -85,9 +85,9 @@ int			check_map_closed(struct s_map *map)
 	return (SUCCESS);
 }
 
-int			check_map(struct s_map *map, int count_pos, int i)
+int	check_map(struct s_map *map, int count_pos, int i)
 {
-	struct s_map 	*tmp;
+	struct s_map	*tmp;
 
 	tmp = map;
 	while (tmp)

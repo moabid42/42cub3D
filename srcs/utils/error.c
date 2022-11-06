@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:53:06 by phperrot          #+#    #+#             */
-/*   Updated: 2022/11/06 18:04:50 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 23:22:15 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_error_tex(int error, struct s_cub3d *env)
 	ft_putstr("Error\nProblem with textures loading");
 }
 
-int		ft_error(int error, struct s_cub3d *env)
+int	ft_error(int error, struct s_cub3d *env)
 {
 	if (error == ZBUFFER_ERROR)
 	{

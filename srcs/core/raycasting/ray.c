@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:47:30 by moabid            #+#    #+#             */
-/*   Updated: 2022/11/06 18:04:50 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 20:34:56 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-void		ft_init_ray(struct s_cub3d *env, int x)
+void	ft_init_ray(struct s_cub3d *env, int x)
 {
 	env->ray.camera = 2 * x / (double)(env->width) - 1;
 	env->ray.rposx = env->player_x;
@@ -22,14 +21,14 @@ void		ft_init_ray(struct s_cub3d *env, int x)
 	env->ray.rdiry = -env->ray.diry + env->ray.planey * env->ray.camera;
 	env->ray.rmapx = (int)env->ray.rposx;
 	env->ray.rmapy = (int)env->ray.rposy;
-	env->ray.rdisdx = sqrt(1 + (env->ray.rdiry * env->ray.rdiry) /
-		(env->ray.rdirx * env->ray.rdirx));
-	env->ray.rdisdy = sqrt(1 + (env->ray.rdirx * env->ray.rdirx) /
-		(env->ray.rdiry * env->ray.rdiry));
+	env->ray.rdisdx = sqrt(1 + (env->ray.rdiry * env->ray.rdiry)
+			/ (env->ray.rdirx * env->ray.rdirx));
+	env->ray.rdisdy = sqrt(1 + (env->ray.rdirx * env->ray.rdirx)
+			/ (env->ray.rdiry * env->ray.rdiry));
 	env->ray.hit = 0;
 }
 
-void		ft_direction_ray(struct s_cub3d *env)
+void	ft_direction_ray(struct s_cub3d *env)
 {
 	if (env->ray.rdirx > 0)
 	{
@@ -39,8 +38,8 @@ void		ft_direction_ray(struct s_cub3d *env)
 	else
 	{
 		env->ray.stepx = 1;
-		env->ray.rdistx = (env->ray.rmapx + 1.0 - env->ray.rposx) *
-			env->ray.rdisdx;
+		env->ray.rdistx = (env->ray.rmapx + 1.0 - env->ray.rposx)
+			* env->ray.rdisdx;
 	}
 	if (env->ray.rdiry > 0)
 	{
@@ -50,12 +49,12 @@ void		ft_direction_ray(struct s_cub3d *env)
 	else
 	{
 		env->ray.stepy = 1;
-		env->ray.rdisty = (env->ray.rmapy + 1.0 - env->ray.rposy) *
-			env->ray.rdisdy;
+		env->ray.rdisty = (env->ray.rmapy + 1.0 - env->ray.rposy)
+			* env->ray.rdisdy;
 	}
 }
 
-char		get_wall_tex(struct s_cub3d *env)
+char	get_wall_tex(struct s_cub3d *env)
 {
 	char	wall_tex;
 
@@ -64,7 +63,7 @@ char		get_wall_tex(struct s_cub3d *env)
 		if (env->ray.stepx > 0 && env->ray.rmapx > \
 		(int)env->ray.rposx && env->ray.wall == 0)
 			wall_tex = 'W';
-		if (env->ray.stepx < 0 && env->ray.rmapx < (int)\
+		if (env->ray.stepx < 0 && env->ray.rmapx < (int) \
 		env->ray.rposx && env->ray.wall == 0)
 			wall_tex = 'E';
 	}
@@ -80,7 +79,7 @@ char		get_wall_tex(struct s_cub3d *env)
 	return (wall_tex);
 }
 
-char		ft_hit_ray(struct s_cub3d *env, char wall_tex)
+char	ft_hit_ray(struct s_cub3d *env, char wall_tex)
 {
 	while (env->ray.hit == 0)
 	{
@@ -103,7 +102,7 @@ char		ft_hit_ray(struct s_cub3d *env, char wall_tex)
 	return (wall_tex);
 }
 
-void		ft_size_ray(struct s_cub3d *env)
+void	ft_size_ray(struct s_cub3d *env)
 {
 	if (env->ray.wall == 0)
 		env->ray.dist = fabs((env->ray.rmapx - env->ray.rposx

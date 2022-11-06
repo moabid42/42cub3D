@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_long.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 19:19:17 by moabid            #+#    #+#             */
-/*   Updated: 2022/11/06 19:23:10 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 19:48:56 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,36 @@ static int	ft_size(unsigned long n, int negative)
 	return (size);
 }
 
-static int	ft_negative(long n)
+// static int	ft_negative(long n)
+// {
+// 	if (n < 0)
+// 		return (1);
+// 	return (0);
+// }
+
+// static int	is_minus(long n)
+// {
+// 	if (n < 0)
+// 		return (-n);
+// 	return (n);
+// }
+
+int	norm(char **number)
 {
-	if (n < 0)
-		return (1);
-	return (0);
+	*number = (char *)malloc(sizeof(*number) * 1);
+	if (!number)
+		return (0);
+	return (1);
 }
 
-static int	is_minus(long n)
+void	ft_neg_min(int *negative, unsigned long *n, int input)
 {
-	if (n < 0)
-		return (-n);
-	return (n);
+	if (input < 0)
+		*n = input * -1;
+	if (input < 0)
+		*negative = 1;
+	else
+		*negative = 0;
 }
 
 char	*ft_itoa_long(long input)
@@ -68,15 +86,13 @@ char	*ft_itoa_long(long input)
 	int				negative;
 	unsigned long	n;
 
-	negative = ft_negative(input);
-	n = is_minus(input);
+	ft_neg_min(&negative, &n, input);
 	if (!n)
 		return (ft_strdup("0"));
 	size = ft_size(n, negative);
 	if (n == 0)
 	{
-		number = (char *)malloc(sizeof(*number) * 1);
-		if (!number)
+		if (norm(&number))
 			return (NULL);
 		number[0] = '0';
 	}

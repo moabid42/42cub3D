@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser_tex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:13:17 by moabid            #+#    #+#             */
-/*   Updated: 2022/11/06 18:13:20 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 20:16:23 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int			check_path(struct s_data *arg, char *buff)
+int	check_path(struct s_data *arg, char *buff)
 {
 	char	*orientation;
 	int		i;
@@ -38,7 +38,7 @@ int			check_path(struct s_data *arg, char *buff)
 	return (check_path1(orientation, buff, i, arg));
 }
 
-int			check_path1(char *orientation, char *buff, int i, struct s_data *arg)
+int	check_path1(char *orientation, char *buff, int i, struct s_data *arg)
 {
 	if (!ft_strncmp("WE", orientation, 2))
 	{

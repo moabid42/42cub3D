@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free_and_exit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:05:18 by phperrot          #+#    #+#             */
-/*   Updated: 2022/11/06 18:04:50 by moabid           ###   ########.fr       */
+/*   Updated: 2022/11/06 23:22:55 by rdoukali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		ft_exit(struct s_cub3d *env)
+int	ft_exit(struct s_cub3d *env)
 {
 	if (!env->error)
 	{
@@ -37,7 +37,7 @@ void	ft_free_tex(struct s_cub3d *env, t_tex *tex)
 	}
 }
 
-void	ft_free_img(struct s_cub3d *env, struct s_img  *img)
+void	ft_free_img(struct s_cub3d *env, struct s_img *img)
 {
 	if (img)
 	{
