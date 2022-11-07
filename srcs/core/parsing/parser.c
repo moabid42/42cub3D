@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:13:31 by moabid            #+#    #+#             */
-/*   Updated: 2022/11/06 20:16:10 by rdoukali         ###   ########.fr       */
+/*   Updated: 2022/11/07 02:57:58 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,18 @@ int	check_floor_ceil_b(struct s_data *arg, char *line, int i)
 	return (SUCCESS);
 }
 
+void	get_celling_floor(struct s_data *arg, char *line, int *i)
+{
+	if (line[0] == 'F')
+		arg->floor.r = ft_atoi(line + (*i));
+	else
+		arg->ceil.r = ft_atoi(line + (*i));
+	while (ft_isdigit(line[(*i)]))
+		(*i)++;
+	while (!ft_isdigit(line[(*i)]) && line[(*i)] != '-' && line[(*i)])
+		(*i)++;
+}
+
 int	check_floor_ceil(struct s_data *arg, char *line)
 {
 	int	i;
@@ -49,14 +61,7 @@ int	check_floor_ceil(struct s_data *arg, char *line)
 		i++;
 	if (ft_atoi(line + i) > 255 || ft_atoi(line + i) < 0)
 		return (RGB_ERROR);
-	if (line[0] == 'F')
-		arg->floor.r = ft_atoi(line + i);
-	else
-		arg->ceil.r = ft_atoi(line + i);
-	while (ft_isdigit(line[i]))
-		i++;
-	while (!ft_isdigit(line[i]) && line[i] != '-' && line[i])
-		i++;
+	get_celling_floor(arg, line, &i);
 	if (!line[i])
 		return (RGB_ERROR);
 	if (ft_atoi(line + i) > 255 || ft_atoi(line + i) < 0)

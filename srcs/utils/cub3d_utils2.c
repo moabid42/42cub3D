@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:26:33 by phperrot          #+#    #+#             */
-/*   Updated: 2022/11/06 23:17:01 by rdoukali         ###   ########.fr       */
+/*   Updated: 2022/11/07 03:05:04 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ char	**map_list_create(struct s_map *lst)
 	char			**tab;
 
 	tmp = lst;
-	tab = malloc(sizeof(char *) * (ft_lstsize_map(lst) + 1));
-	if (!tab)
-		return (NULL);
+	tab = ft_malloc(sizeof(char *) * (ft_lstsize_map(lst) + 1));
 	i = 0;
 	while (i < ft_lstsize_map(lst))
 	{

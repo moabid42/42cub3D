@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:59:14 by moabid            #+#    #+#             */
-/*   Updated: 2022/11/06 23:08:17 by rdoukali         ###   ########.fr       */
+/*   Updated: 2022/11/07 03:03:50 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,22 @@ bool	line_checker(char *prev_line, char *line, char *next_line)
 	return (true);
 }
 
+void	init_vars(struct s_map **map, struct s_map **tmp,
+					struct s_map **prev_line, struct s_map **next_line)
+{
+	*tmp = *map;
+	if ((*tmp)->next)
+		*next_line = (*tmp)->next;
+	*prev_line = *map;
+}
+
 bool	cub3d_check_map(struct s_map *map, int i)
 {
 	struct s_map	*tmp;
 	struct s_map	*prev_line;
 	struct s_map	*next_line;
 
-	tmp = map;
-	if (tmp->next)
-		next_line = tmp->next;
-	prev_line = map;
+	init_vars(&map, &tmp, &prev_line, &next_line);
 	while (tmp != NULL)
 	{
 		if (i == 0 && first_line_checker(tmp->line) == false)
