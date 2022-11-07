@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:26:08 by phperrot          #+#    #+#             */
-/*   Updated: 2022/11/06 19:30:54 by rdoukali         ###   ########.fr       */
+/*   Updated: 2022/11/07 03:10:17 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,7 @@ bool						line_isnotempty(struct s_data *arg, char *line);
 int							error(int error);
 bool						cub3d_check_map(struct s_map *map, int i);
 bool						cub3d_create(struct s_data *arg, char *file);
+void						*ft_malloc(size_t size);
 
 ///////////////////////////////
 //          events.c         //
@@ -188,4 +189,5 @@ void						translation(struct s_cub3d *env);
 void						right_translation(struct s_cub3d *env);
 void						left_translation(struct s_cub3d *env);
 void						rotation(struct s_cub3d *env, int advance);
+
 #	endif

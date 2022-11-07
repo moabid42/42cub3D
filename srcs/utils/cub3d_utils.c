@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:05:58 by phperrot          #+#    #+#             */
-/*   Updated: 2022/11/06 23:14:42 by rdoukali         ###   ########.fr       */
+/*   Updated: 2022/11/07 03:09:18 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,19 @@ struct s_map	*ft_lstlast_map(struct s_map *lst)
 	while (tmp->next)
 		tmp = tmp->next;
 	return (tmp);
+}
+
+void	*ft_malloc(size_t size)
+{
+	void	*ptr;
+
+	ptr = malloc(size);
+	if (ptr)
+		ft_bzero(ptr, size);
+	else
+	{
+		free(ptr);
+		exit(1);
+	}
+	return (ptr);
 }

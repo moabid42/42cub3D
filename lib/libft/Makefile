@@ -6,7 +6,7 @@
 #    By: moabid <moabid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/06 19:00:55 by moabid            #+#    #+#              #
-#    Updated: 2022/11/06 19:01:43 by moabid           ###   ########.fr        #
+#    Updated: 2022/11/07 03:14:20 by moabid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,14 +31,12 @@ OFILES = ${FILES:.c=.o}
 
 ${NAME} : ${OFILES} ${INC}
 	@ar -rcs ${NAME} ${OFILES}
-	@echo "${YELLOW}libft.a created 👍${NC}"
 
 clean:
 	@rm -f ${OFILES} ${OBONUS}
 
 fclean : clean
 	@rm -f ${NAME}
-	@echo "${YELLOW}libft.a is removed 👎${NC}"
 
 re : fclean all
 
