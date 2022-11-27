@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_tex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdoukali <rdoukali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moabid <moabid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:13:17 by moabid            #+#    #+#             */
-/*   Updated: 2022/11/06 20:16:23 by rdoukali         ###   ########.fr       */
+/*   Updated: 2022/11/27 17:41:43 by moabid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ int	check_path1(char *orientation, char *buff, int i, struct s_data *arg)
 			return (ft_error_tex_inputs(PATH_ERROR, orientation));
 		arg->ea = ft_strsub(buff, i, ft_strlen(buff) - i);
 	}
+	free(orientation);
 	return (SUCCESS);
 }
